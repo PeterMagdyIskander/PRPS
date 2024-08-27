@@ -5,8 +5,6 @@
 <script>
 
 import { mapGetters, mapActions } from 'vuex';
-import { initialize } from '@/firebase';
-const { firebaseApp, firestore, auth } = initialize();
 export default {
   data() {
     return {
