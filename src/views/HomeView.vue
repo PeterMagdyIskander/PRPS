@@ -35,8 +35,6 @@ export default {
 }
 
 .header {
-  width: 100%;
-  min-height: 200px;
   background-image: linear-gradient(#0044F1, #4E7CF1);
   border-radius: 50px;
   padding: 60px 24px 0 24px;
