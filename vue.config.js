@@ -10,13 +10,9 @@ module.exports = defineConfig({
 
     // Add vue-svg-loader with SVGO options
     svgRule
-      .use('babel-loader')
-      .loader('babel-loader')
-      .end()
       .use('vue-svg-loader')
       .loader('vue-svg-loader')
       .tap(options => ({
-        // Ensure viewBox and other critical attributes are preserved
         svgo: {
           plugins: [
             { removeViewBox: false },
