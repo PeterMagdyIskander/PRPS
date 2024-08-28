@@ -9,8 +9,8 @@
         challenges and opportunities in your career journey.
       </h1>
       <button class="header-call-to-action">Get started</button>
-      <img class="header-device" src="@/assets/images/device-mobile-view.svg" alt="device-mobile">
-      <img class="header-shape" src="@/assets/images/shape-mobile-view.svg" alt="shape-mobile">
+      <img class="header-device" src="@/assets/images/device-mobile-view.svg" loading="eager" alt="device-mobile">
+      <img class="header-shape" src="@/assets/images/shape-mobile-view.svg" loading="eager" alt="shape-mobile">
     </div>
   </div>
 </template>
