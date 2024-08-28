@@ -15,8 +15,10 @@
     "prps": "file:",
     "qrcode": "^1.5.3",
     "vue": "^3.2.13",
+    "vue-loader": "^17.4.2",
     "vue-router": "^4.0.3",
     "vue-svg-loader": "^0.16.0",
+    "vueify": "^9.4.1",
     "vuex": "^4.0.0",
     "xlsx": "^0.18.5"
   },
