@@ -77,6 +77,7 @@ export default {
   &-device {
     width: fit-content;
     max-width: fit-content;
+    object-fit: contain;
     margin-top: -20px;
     position: relative;
     z-index: 1;
