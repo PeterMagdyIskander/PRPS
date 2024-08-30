@@ -5,4 +5,5 @@ import store from './store'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import './assets/sass/style.scss'
-createApp(App).use(store).use(router).mount('#app')
+import Vue3Marquee from 'vue3-marquee'
+createApp(App).use(Vue3Marquee).use(store).use(router).mount('#app')
