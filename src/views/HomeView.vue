@@ -86,8 +86,8 @@ export default {
   }
 
   &-device {
-    width: fit-content;
-    max-width: fit-content;
+    width: 100%;
+    max-width: 100%;
     object-fit: contain;
     margin-top: -20px;
     position: relative;
