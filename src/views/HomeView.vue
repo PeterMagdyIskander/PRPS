@@ -23,7 +23,6 @@
       <img class="header-shape" src="@/assets/images/shape-mobile-view.svg" loading="eager" alt="shape-mobile">
     </div>
     <Vue3Marquee>
-
       <img src="@/assets/images/logos0.svg" />
       <img src="@/assets/images/logos1.svg" />
       <img src="@/assets/images/logos2.svg" />
@@ -42,6 +41,20 @@
       <img src="@/assets/images/logos15.svg" />
       <img src="@/assets/images/logos16.svg" />
     </Vue3Marquee>
+    <div class="separator">
+      <img src="@/assets/images/prps-logo.svg" alt="prps-logo">
+      <h1 class="separator-title">Customer journey</h1>
+    </div>
+    <div class="journey">
+
+    </div>
+    <div class="separator">
+      <img src="@/assets/images/prps-logo.svg" alt="prps-logo">
+      <h1 class="separator-title">Meet Our Experts</h1>
+    </div>
+    <div class="journey">
+
+    </div>
   </div>
 </template>
 
@@ -70,6 +83,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+* {
+  padding: 0;
+  margin: 0;
+}
+
 .home {
   display: flex;
   flex-direction: column;
@@ -140,10 +158,32 @@ export default {
 
 ::v-deep.vue3-marquee.horizontal>.marquee {
   column-gap: 25px;
-  margin: 60px 0;
+  margin: 60px 0 44px 0;
 
   img {
     height: 30px;
   }
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  margin: 16px 0;
+  &-title {
+    font-family: 'ArchivoBlack-Regular';
+    color: #0044F1;
+    font-weight: 400;
+    font-size: 24px;
+  }
+}
+
+.journey {
+  width: 100%;
+  height: 780px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background-color: #F6F6F6;
+  margin-bottom: 44px;
 }
 </style>
