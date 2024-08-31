@@ -52,7 +52,7 @@
       <img src="@/assets/images/prps-logo.svg" alt="prps-logo">
       <h1 class="separator-title">Meet Our Experts</h1>
     </div>
-    <Vue3Marquee :animate-on-overflow-only="true" :pause-on-hover="true">
+    <Vue3Marquee :animate-on-overflow-only="true" :pause-on-click="true">
       <ExpertCard></ExpertCard>
       <ExpertCard></ExpertCard>
       <ExpertCard></ExpertCard>
