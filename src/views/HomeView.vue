@@ -22,7 +22,7 @@
       </svg>
       <img class="header-shape" src="@/assets/images/shape-mobile-view.svg" loading="eager" alt="shape-mobile">
     </div>
-    <Vue3Marquee>
+    <Vue3Marquee class="imgs-marquee">
       <img src="@/assets/images/logos0.svg" />
       <img src="@/assets/images/logos1.svg" />
       <img src="@/assets/images/logos2.svg" />
@@ -52,6 +52,12 @@
       <img src="@/assets/images/prps-logo.svg" alt="prps-logo">
       <h1 class="separator-title">Meet Our Experts</h1>
     </div>
+    <Vue3Marquee :animate-on-overflow-only="true" :pause-on-hover="true">
+      <ExpertCard></ExpertCard>
+      <ExpertCard></ExpertCard>
+      <ExpertCard></ExpertCard>
+      <ExpertCard></ExpertCard>
+    </Vue3Marquee>
     <div class="journey">
 
     </div>
@@ -61,11 +67,12 @@
 <script>
 import { mapGetters } from 'vuex';
 import { Vue3Marquee } from 'vue3-marquee'
-
+import ExpertCard from '@/components/ExpertCard.vue';
 export default {
   name: 'HomeView',
   components: {
     Vue3Marquee,
+    ExpertCard
   },
   computed: mapGetters(['getUser']),
   data() {
@@ -155,13 +162,12 @@ export default {
     right: -50px;
   }
 }
+.imgs-marquee {
 
-::v-deep.vue3-marquee.horizontal>.marquee {
-  column-gap: 25px;
   margin: 60px 0 44px 0;
-
   img {
     height: 30px;
+    margin: 0 12px;
   }
 }
 
@@ -170,6 +176,7 @@ export default {
   align-items: center;
   column-gap: 8px;
   margin: 16px 0;
+
   &-title {
     font-family: 'ArchivoBlack-Regular';
     color: #0044F1;
