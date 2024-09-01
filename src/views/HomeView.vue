@@ -157,14 +157,26 @@ export default {
 
   &-shape {
     position: absolute;
+    width: 100%;
     z-index: 0;
-    bottom: -125px;
-    right: -50px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    margin: 0 auto;
+
+    max-width: 969px;
+
+    @media(max-width: 768px) {
+      width: 500px;
+      left: -70px;
+    }
   }
 }
+
 .imgs-marquee {
 
   margin: 60px 0 44px 0;
+
   img {
     height: 30px;
     margin: 0 12px;
