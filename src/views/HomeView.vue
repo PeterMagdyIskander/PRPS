@@ -166,11 +166,11 @@ export default {
     right: 0;
     left: 0;
     margin: 0 auto;
-      width: 100%;
-      max-width: 969px;
-    @media(max-width: 768px) {
+    min-width: 469px;
+    width: 100%;
+    max-width: 969px;
+    @media(max-width: 390px) {
       left: -70px;
-      min-width: 469px;
     }
   }
 
@@ -225,7 +225,7 @@ export default {
   }
 }
 
-.show-down-animation { 
+.show-down-animation {
   animation: autoShowDownAnimation 1000ms;
 }
 
