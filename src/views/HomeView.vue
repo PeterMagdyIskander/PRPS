@@ -164,12 +164,16 @@ export default {
     z-index: 0;
     bottom: 0;
     right: 0;
-    left: -62px;
+    left: 0;
     margin: 0 auto;
-    min-width: 460px;
-    width: 100%;
-    max-width: 950px
+      width: 100%;
+      max-width: 969px;
+    @media(max-width: 768px) {
+      left: -70px;
+      min-width: 469px;
     }
+  }
+
 }
 
 .imgs-marquee {
@@ -206,7 +210,6 @@ export default {
 }
 
 .show-up-animation {
-
   animation: autoShowUpAnimation 1000ms;
 }
 
@@ -222,8 +225,7 @@ export default {
   }
 }
 
-.show-down-animation {
-
+.show-down-animation { 
   animation: autoShowDownAnimation 1000ms;
 }
 
