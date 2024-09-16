@@ -179,10 +179,12 @@ export default {
 .imgs-marquee {
 
   margin: 60px 0 44px 0;
-
   img {
     height: 30px;
     margin: 0 12px;
+  }
+  ::v-deep.vue3-marquee.horizontal>.marquee{
+    justify-content: space-evenly;
   }
 }
 
