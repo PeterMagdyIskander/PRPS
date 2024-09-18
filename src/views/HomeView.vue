@@ -9,10 +9,10 @@
           Match with a mentor who is not only aligned with your goals but also committed to helping you navigate the
           challenges and opportunities in your career journey.
         </h1>
-        <button class="header-call-to-action">Get started</button>
+        <button class="header-call-to-action" @click="reroute()">Get started</button>
       </div>
       <div class="show-up-animation">
-        
+
         <img class="header-device" src="@/assets/images/mobile-img.svg" loading="eager" alt="mobile-img">
         <img class="header-shape" src="@/assets/images/shape-mobile-view.svg" loading="eager" alt="shape-mobile">
       </div>
@@ -60,6 +60,8 @@
 </template>
 
 <script>
+
+import router from '@/router'
 import { mapGetters } from 'vuex';
 import { Vue3Marquee } from 'vue3-marquee'
 import ExpertCard from '@/components/ExpertCard.vue';
@@ -80,6 +82,9 @@ export default {
   methods: {
     getImage(imagePath) {
       return require(imagePath);
+    },
+    reroute() {
+      router.push(`/login`)
     }
   }
 }
@@ -160,6 +165,7 @@ export default {
     min-width: 469px;
     width: 100%;
     max-width: 969px;
+
     @media(max-width: 390px) {
       left: -70px;
     }
@@ -170,11 +176,13 @@ export default {
 .imgs-marquee {
 
   margin: 60px 0 44px 0;
+
   img {
     height: 30px;
     margin: 0 12px;
   }
-  ::v-deep.vue3-marquee.horizontal>.marquee{
+
+  ::v-deep.vue3-marquee.horizontal>.marquee {
     justify-content: space-evenly;
   }
 }
