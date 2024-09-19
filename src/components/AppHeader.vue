@@ -32,6 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 .header-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 24px;

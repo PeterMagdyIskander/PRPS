@@ -5,6 +5,10 @@
             alt="show password">
         <img v-if="password && showPassword" @click="viewPassword()" src="@/assets/images/opened.svg"
             alt="show password">
+
+        <img v-if="dropdown" src="@/assets/images/arrow-down.svg"
+            alt="arrow down">
+        
     </div>
 </template>
 <script>
@@ -12,6 +16,11 @@ export default {
     name: "input-field",
     props: {
         password: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+        dropdown: {
             type: Boolean,
             required: false,
             default: false,
@@ -59,6 +68,8 @@ export default {
         font-family: 'Poppins-Regular';
     }
     img{
+        width: 24px;
+        height: 24px;
         right: 13px;
         position: absolute;
     }
