@@ -1,6 +1,9 @@
 <template>
     <div class="login-container">
         <AppHeader title="Login" subtitle="Welcome back! Your next career move awaits."></AppHeader>
+        <InputField class="mail" :placeholder="'Enter your email'"></InputField>
+        <InputField class="password" :placeholder="'Enter your password'" :password="true"></InputField>
+        <p class="forgot-password">Forgot password?</p>
         <div class="login-container-actions">
             <button class="login">
                 Login
@@ -25,22 +28,23 @@
 <script>
 
 import AppHeader from '@/components/AppHeader.vue';
+import InputField from '@/components/InputField.vue';
 import router from '@/router'
 export default {
     name: 'LoginView',
-    components:{
-        AppHeader
+    components: {
+        AppHeader,
+        InputField
     },
     methods: {
-    reroute() {
-      router.push(`/signup`)
+        reroute() {
+            router.push(`/signup`)
+        }
     }
-  }
 }
 </script>
 
 <style scoped lang="scss">
-
 * {
     padding: 0;
     margin: 0;
@@ -52,8 +56,25 @@ export default {
     align-items: center;
     max-width: 342px;
     margin: 0 auto;
-    
+    position: relative;
+
+    .mail {
+        margin-bottom: 16px;
+    }
+
+    .password {
+        margin-bottom: 8px;
+    }
+    .forgot-password{
+        align-self: flex-end;
+        font-size: 14px;
+        font-family: 'Poppins-Regular';
+        font-weight: 600;
+        color: #212C2D;
+        margin-bottom: 190px;
+    }
     &-actions {
+        margin-bottom: 32px;
         .separator {
             display: flex;
             justify-content: space-between;
@@ -96,13 +117,15 @@ export default {
             max-width: 342px;
             margin-bottom: 16px;
         }
-        .signup{
+
+        .signup {
             margin-top: 8px;
             text-align: center;
             font-size: 14px;
             font-family: 'Poppins-Regular';
             color: #535A5F;
-            span{ 
+
+            span {
                 cursor: pointer;
                 font-weight: 600;
                 color: #212C2D;
