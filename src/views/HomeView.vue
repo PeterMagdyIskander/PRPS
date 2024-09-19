@@ -13,7 +13,7 @@
       </div>
       <div class="show-up-animation">
 
-        <img class="header-device" src="@/assets/images/mobile-img.svg" loading="eager" alt="mobile-img">
+        <img class="header-device" src="@/assets/images/Rectangle.png" loading="eager" alt="mobile-img">
         <img class="header-shape" src="@/assets/images/shape-mobile-view.svg" loading="eager" alt="shape-mobile">
       </div>
     </div>
@@ -133,8 +133,7 @@ export default {
   }
 
   &-call-to-action {
-    all: unset;
-    cursor: pointer;
+    border: unset;
     border-radius: 12px;
     padding: 10px 24px 10px 24px;
     background-color: #fff;
@@ -142,7 +141,7 @@ export default {
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    text-align: center;
+    margin: 0 auto;
     color: #0044F1;
   }
 
@@ -182,7 +181,7 @@ export default {
     margin: 0 12px;
   }
 
-  ::v-deep.vue3-marquee.horizontal>.marquee {
+  :deep(.marquee) {
     justify-content: space-evenly;
   }
 }
