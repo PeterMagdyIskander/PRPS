@@ -12,5 +12,5 @@ RUN npm install
 
 ADD . /app/
 
-EXPOSE 8080
-CMD [ "npm", "run", "serve"]
+EXPOSE 3000
+CMD [ "npm", "start"]
