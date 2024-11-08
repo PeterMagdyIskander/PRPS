@@ -2,23 +2,42 @@
     <div class="logged-in-container">
         <AppHeader :title="`Welcome, ${getUser.name}! 🙌`" subtitle="Let’s connect you with the best career coach!">
         </AppHeader>
-        <div class="recommendation" v-if="!getUser.questionnaire">
+        <swiper pagination>
+            <swiper-slide v-for="(slide, index) in meetingRequestSlides" :key="index">
+                <MeetingRequestCard :type="slide.type" :subtitle="slide.subtitle" :title="slide.title">
+                </MeetingRequestCard>
+            </swiper-slide>
+        </swiper>
+        <div class="recommendation">
             <div class="recommendation-header">
                 <p class="recommendation-header-title">Recommended coaches</p>
                 <p class="for-you">For you</p>
             </div>
-            <p class="recommendation-text">Tell us your interests and needs to help us find the best career coach match
+            <p v-if="!getUser.questionnaire" class="recommendation-text">Tell us your interests and needs to help us
+                find the best career coach match
                 for you.</p>
-            <div class="call-to-action">
+            <div v-if="!getUser.questionnaire" class="call-to-action">
                 <p>Fill form</p>
                 <img src="@/assets/images/arrow-left.svg" alt="arrow left">
             </div>
+            <swiper v-else>
+                <swiper-slide>
+                    <div class="expert-card-container">
+                        <ExpertCard></ExpertCard>
+                        <ExpertCard></ExpertCard>
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="expert-card-container">
+                        <ExpertCard></ExpertCard>
+                        <div class="show-more">
+                            <p>Show more</p>
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
         </div>
-        <swiper pagination>
-            <swiper-slide v-for="(slide, index) in meetingRequestSlides" :key="index">
-                <MeetingRequestCard :type="slide.type" :subtitle="slide.subtitle" :title="slide.title" ></MeetingRequestCard>
-            </swiper-slide>
-        </swiper>
+
         <p class="session">Upcoming sessions</p>
         <SevenDayDatePicker></SevenDayDatePicker>
     </div>
@@ -28,8 +47,9 @@ import { mapGetters } from 'vuex';
 import SevenDayDatePicker from '@/components/calendars/SevenDayDatePicker.vue';
 import AppHeader from '@/components/AppHeader.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import MeetingRequestCard from '@/components/MeetingRequestCard.vue';
+import MeetingRequestCard from '@/components/home/MeetingRequestCard.vue';
 import 'swiper/swiper-bundle.css';
+import ExpertCard from '@/components/home/ExpertCard.vue';
 export default {
     name: "LoggedInView",
     computed: mapGetters(['getUser']),
@@ -38,7 +58,8 @@ export default {
         AppHeader,
         Swiper,
         SwiperSlide,
-        MeetingRequestCard
+        MeetingRequestCard,
+        ExpertCard
     }, data() {
         return {
             meetingRequestSlides: [
@@ -62,8 +83,9 @@ export default {
     max-width: 342px;
     margin: 0 auto;
     position: relative;
+
     .recommendation {
-        margin-bottom: 48px;
+        margin-bottom: 24px;
 
         &-header {
             display: flex;
@@ -116,6 +138,37 @@ export default {
         color: #212C2D;
         font-size: 20px;
         margin-bottom: 16px;
+    }
+}
+
+:deep(.swiper-pagination-bullet) {
+    background-color: rgba(0, 68, 241, 0.8);
+}
+
+:deep(.swiper-pagination-bullet-active) {
+    background-color: #0044F1;
+}
+
+.expert-card-container {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 16px;
+}
+
+.show-more {
+    width: 163px;
+    height: 163px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: #F6F6F6;
+    cursor: pointer;
+    p {
+        font-family: 'Poppins-Bold';
+        font-size: 16px;
+        color: #212C2D;
     }
 }
 </style>

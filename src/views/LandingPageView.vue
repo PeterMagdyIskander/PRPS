@@ -73,7 +73,7 @@
   import router from '@/router'
   import { mapGetters } from 'vuex';
   import { Vue3Marquee } from 'vue3-marquee'
-  import ExpertCard from '@/components/ExpertCard.vue';
+  import ExpertCard from '@/components/landing/ExpertCard.vue';
   export default {
     name: 'LandingPage',
     components: {
