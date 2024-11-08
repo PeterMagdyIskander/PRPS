@@ -18,8 +18,9 @@ function getStoredCredentials() {
 export default createStore({
   state: {
     user: {
-      name:"Peter"
-    },
+      name:"Peter",
+      questionnaire:true,//could be, started,
+    }
   },
   getters: {
     getUser: (state) => state.user,

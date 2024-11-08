@@ -2,7 +2,7 @@
     <div class="logged-in-container">
         <AppHeader :title="`Welcome, ${getUser.name}! 🙌`" subtitle="Let’s connect you with the best career coach!">
         </AppHeader>
-        <div class="recommendation">
+        <div class="recommendation" v-if="!getUser.questionnaire">
             <div class="recommendation-header">
                 <p class="recommendation-header-title">Recommended coaches</p>
                 <p class="for-you">For you</p>
@@ -14,6 +14,11 @@
                 <img src="@/assets/images/arrow-left.svg" alt="arrow left">
             </div>
         </div>
+        <swiper pagination>
+            <swiper-slide v-for="(slide, index) in meetingRequestSlides" :key="index">
+                <MeetingRequestCard :type="slide.type" :subtitle="slide.subtitle" :title="slide.title" ></MeetingRequestCard>
+            </swiper-slide>
+        </swiper>
         <p class="session">Upcoming sessions</p>
         <SevenDayDatePicker></SevenDayDatePicker>
     </div>
@@ -22,11 +27,28 @@
 import { mapGetters } from 'vuex';
 import SevenDayDatePicker from '@/components/calendars/SevenDayDatePicker.vue';
 import AppHeader from '@/components/AppHeader.vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import MeetingRequestCard from '@/components/MeetingRequestCard.vue';
+import 'swiper/swiper-bundle.css';
 export default {
     name: "LoggedInView",
     computed: mapGetters(['getUser']),
-    components: { SevenDayDatePicker, AppHeader }
-}</script>
+    components: {
+        SevenDayDatePicker,
+        AppHeader,
+        Swiper,
+        SwiperSlide,
+        MeetingRequestCard
+    }, data() {
+        return {
+            meetingRequestSlides: [
+                { title: "Industry expert?", subtitle: "Want a meeting with an", type: "expert" },
+                { title: "Internship?", subtitle: "Want help in applying for an", type: "internship" },
+            ],
+        }
+    }
+}
+</script>
 
 <style scoped lang="scss">
 * {
@@ -40,7 +62,6 @@ export default {
     max-width: 342px;
     margin: 0 auto;
     position: relative;
-
     .recommendation {
         margin-bottom: 48px;
 
