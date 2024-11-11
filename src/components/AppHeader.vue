@@ -1,9 +1,12 @@
 <template>
     <div class="header-container">
-        <div class="logo-container" :class="{ 'logged': getUser, 'not-logged': getUser === null }">
+        <img v-if="showBackButton" class="back-button" @click="reroute('/')" src="@/assets/images/back-button.svg" alt="back-button">
+        <div v-else class="logo-container"
+            :class="{ 'logged': getUser, 'not-logged': getUser === null }">
             <img @click="reroute('/')" src="@/assets/images/logo.svg" alt="logo">
             <img @click="reroute()" v-if="getUser" src="@/assets/images/heart.svg" alt="heart">
         </div>
+
         <p class="title" v-if="title">{{ title }}</p>
         <p class="subtitle" v-if="subtitle">{{ subtitle }}</p>
     </div>
@@ -24,7 +27,11 @@ export default {
             type: String,
             required: false,
         },
-
+        showBackButton: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
     },
     computed: mapGetters(['getUser',]),
     methods: {
@@ -40,12 +47,20 @@ export default {
     padding: 0;
     margin: 0;
 }
+
 .header-container {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding-top: 62px;
     margin-bottom: 24px;
+
+    .back-button {
+        width: 48px;
+        height: 48px;
+        margin-bottom:32px;
+        cursor: pointer;
+    }
 
     .logo-container {
         width: 100%;

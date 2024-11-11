@@ -3,7 +3,8 @@ import store from "../store/index.js";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import SignupView from "../views/SignupView.vue";
-
+import CoachView from "../views/CoachView.vue";
+import AllCoachesView from "../views/AllCoachesView.vue";
 const routes = [
   {
     path: "/",
@@ -19,6 +20,16 @@ const routes = [
     path: "/signup",
     name: "signup",
     component: SignupView,
+  },
+  {
+    path: "/all-coaches",
+    name: "allCoaches",
+    component: AllCoachesView,
+  },
+  {
+    path: "/coach/:id",
+    name: "coach",
+    component: CoachView,
   },
 ];
 

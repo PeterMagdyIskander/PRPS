@@ -1,15 +1,16 @@
 <template>
-    <div class="expert-card">
-        <img class="expert-card-img" src="@/assets/images/img-expert-placeholder.svg" alt="placegolder">
-        <img class="expert-card-favorite" src="@/assets/images/favorite-expert.svg" alt="favorite expert">
-        <p class="expert-card-name">{{ name }}</p>
-        <p class="expert-card-job">{{ job }}</p>
+    <div class="coach-card" @click="reroute(`/coach/${id}}`)">
+        <img class="coach-card-img" src="@/assets/images/img-coach-placeholder.svg" alt="placegolder">
+        <img class="coach-card-favorite" src="@/assets/images/favorite-coach.svg" alt="favorite coach">
+        <p class="coach-card-name">{{ name }}</p>
+        <p class="coach-card-job">{{ job }}</p>
     </div>
 </template>
 
 <script>
+import router from '@/router'
 export default {
-    name: "expert-card",
+    name: "coach-card",
     props: {
         name: {
             type: String,
@@ -21,6 +22,16 @@ export default {
             required: true,
             default: "Software Engineer"
         },
+        id: {
+            type: String,
+            required: true,
+            default: "qwe456"
+        },
+    },
+    methods: {
+        reroute(route) {
+            router.push(route)
+        }
     }
 }
 </script>
@@ -31,7 +42,7 @@ export default {
     margin: 0;
 }
 
-.expert-card {
+.coach-card {
     height: 216px;
     width: 163px;
     position: relative;

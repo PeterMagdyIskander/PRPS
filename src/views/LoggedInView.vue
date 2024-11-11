@@ -23,14 +23,14 @@
             <swiper v-else>
                 <swiper-slide>
                     <div class="expert-card-container">
-                        <ExpertCard></ExpertCard>
-                        <ExpertCard></ExpertCard>
+                        <CoachCard></CoachCard>
+                        <CoachCard></CoachCard>
                     </div>
                 </swiper-slide>
                 <swiper-slide>
                     <div class="expert-card-container">
-                        <ExpertCard></ExpertCard>
-                        <div class="show-more">
+                        <CoachCard></CoachCard>
+                        <div class="show-more" @click="reroute('/all-coaches')">
                             <p>Show more</p>
                         </div>
                     </div>
@@ -43,13 +43,15 @@
     </div>
 </template>
 <script>
+
 import { mapGetters } from 'vuex';
 import SevenDayDatePicker from '@/components/calendars/SevenDayDatePicker.vue';
 import AppHeader from '@/components/AppHeader.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import MeetingRequestCard from '@/components/home/MeetingRequestCard.vue';
 import 'swiper/swiper-bundle.css';
-import ExpertCard from '@/components/home/ExpertCard.vue';
+import CoachCard from '@/components/home/CoachCard.vue';
+import router from '@/router'
 export default {
     name: "LoggedInView",
     computed: mapGetters(['getUser']),
@@ -59,13 +61,19 @@ export default {
         Swiper,
         SwiperSlide,
         MeetingRequestCard,
-        ExpertCard
-    }, data() {
+        CoachCard
+    }, 
+    data() {
         return {
             meetingRequestSlides: [
                 { title: "Industry expert?", subtitle: "Want a meeting with an", type: "expert" },
                 { title: "Internship?", subtitle: "Want help in applying for an", type: "internship" },
             ],
+        }
+    },
+    methods: {
+        reroute(route) {
+            router.push(route)
         }
     }
 }
