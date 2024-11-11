@@ -1,8 +1,8 @@
 <template>
-    <div class="header-container">
-        <img v-if="showBackButton" class="back-button" @click="reroute('/')" src="@/assets/images/back-button.svg" alt="back-button">
-        <div v-else class="logo-container"
-            :class="{ 'logged': getUser, 'not-logged': getUser === null }">
+    <div class="header-container" :style="[showBackButton && !title && !subtitle ? { 'margin-bottom': 0 + 'px' } : null]">
+        <img v-if="showBackButton" class="back-button" @click="reroute('/')" src="@/assets/images/back-button.svg"
+            alt="back-button">
+        <div v-else class="logo-container" :class="{ 'logged': getUser, 'not-logged': getUser === null }">
             <img @click="reroute('/')" src="@/assets/images/logo.svg" alt="logo">
             <img @click="reroute()" v-if="getUser" src="@/assets/images/heart.svg" alt="heart">
         </div>
@@ -58,7 +58,7 @@ export default {
     .back-button {
         width: 48px;
         height: 48px;
-        margin-bottom:32px;
+        margin-bottom: 32px;
         cursor: pointer;
     }
 

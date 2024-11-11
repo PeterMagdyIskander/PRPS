@@ -1,25 +1,23 @@
 <template>
-  <div>
-    <div class="date-picker">
-      <div class="date-picker-header">
-        <img @click="previousWeek" src="@/assets/images/next-prev-month.svg" alt="previous button"
-          style="cursor: pointer;">
-        <p>{{ weekRange }}</p>
-        <img @click="nextWeek" src="@/assets/images/next-prev-month.svg" alt="next button"
-          style="transform: rotate(180deg);cursor: pointer;">
-      </div>
-      <div class="date-picker-days">
-        <div v-for="(day, index) in weekDays" :key="index" class="date-picker-days-day">
-          <p class="letter">{{ getFirstLetterOfDay(day) }}</p>
-          <p class="number" :class="{ faded: index == 0 || index == 1, 'today': isToday(day) }">{{ getDayOfMonth(day) }}
-          </p>
-        </div>
+  <div class="date-picker">
+    <div class="date-picker-header">
+      <img @click="previousWeek" src="@/assets/images/next-prev-month.svg" alt="previous button"
+        style="cursor: pointer;">
+      <p>{{ weekRange }}</p>
+      <img @click="nextWeek" src="@/assets/images/next-prev-month.svg" alt="next button"
+        style="transform: rotate(180deg);cursor: pointer;">
+    </div>
+    <div class="date-picker-days">
+      <div v-for="(day, index) in weekDays" :key="index" class="date-picker-days-day">
+        <p class="letter">{{ getFirstLetterOfDay(day) }}</p>
+        <p class="number" :class="{ faded: index == 0 || index == 1, 'today': isToday(day) }">{{ getDayOfMonth(day) }}
+        </p>
       </div>
     </div>
-    <div class="no-sessions">
-      <img src="@/assets/images/book-session.svg" alt="book session">
-      <p>You have no upcoming sessions</p>
-    </div>
+  </div>
+  <div class="no-sessions">
+    <img src="@/assets/images/book-session.svg" alt="book session">
+    <p>You have no upcoming sessions</p>
   </div>
 </template>
 <script>
@@ -158,7 +156,7 @@ export default {
   display: flex;
   align-items: center;
   column-gap: 8px;
-
+  margin-bottom: 60px;
   p {
     font-family: 'Poppins-Medium';
     font-size: 16px;
