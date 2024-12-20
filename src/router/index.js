@@ -5,6 +5,7 @@ import LoginView from "../views/LoginView.vue";
 import SignupView from "../views/SignupView.vue";
 import CoachView from "../views/CoachView.vue";
 import AllCoachesView from "../views/AllCoachesView.vue";
+import MonthDatePicker from "@/components/calendars/MonthDatePicker.vue";
 const routes = [
   {
     path: "/",
@@ -30,6 +31,11 @@ const routes = [
     path: "/coach/:id",
     name: "coach",
     component: CoachView,
+  },
+  {
+    path: "/calendar",
+    name: "calendar",
+    component: MonthDatePicker,
   },
 ];
 
