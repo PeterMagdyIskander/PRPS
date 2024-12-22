@@ -63,8 +63,13 @@
         <ExpertCard></ExpertCard>
       </Vue3Marquee>
       <div class="journey">
-  
       </div>
+      <div class="wrapper">
+      <processCard score="10000" subtitle="PRPS Users"></processCard>
+      <processCard score="720" subtitle="Internships"></processCard>
+      <processCard score="8500" subtitle="Coaching hours"></processCard>
+      <processCard score="300" subtitle="Coaches & Mentors"></processCard>
+    </div>
     </div>
   </template>
   
@@ -74,11 +79,13 @@
   import { mapGetters } from 'vuex';
   import { Vue3Marquee } from 'vue3-marquee'
   import ExpertCard from '@/components/landing/ExpertCard.vue';
+  import ProcessCard from '@/components/landing/ProcessCard.vue';
   export default {
     name: 'LandingPage',
     components: {
       Vue3Marquee,
-      ExpertCard
+      ExpertCard,
+      ProcessCard,
     },
     computed: mapGetters(['getUser']),
     data() {
@@ -248,5 +255,9 @@
       transform: translateY(0);
     }
   }
+  .wrapper{
+    display:flex;
+  }
+  
   </style>
   
