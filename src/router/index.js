@@ -6,6 +6,7 @@ import SignupView from "../views/SignupView.vue";
 import CoachView from "../views/CoachView.vue";
 import AllCoachesView from "../views/AllCoachesView.vue";
 import DayMonthYearPicker from "@/components/calendars/dayMonthYearPicker/DayMonthYearPicker.vue";
+import SlidingMenu from "@/components/shared/SlidingMenu.vue";
 const routes = [
   {
     path: "/",
@@ -36,6 +37,11 @@ const routes = [
     path: "/calendar",
     name: "calendar",
     component: DayMonthYearPicker,
+  },
+  {
+    path: "/sliding",
+    name: "sliding",
+    component: SlidingMenu,
   },
 ];
 

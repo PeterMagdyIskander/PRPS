@@ -6,6 +6,7 @@
     @mouseup="stopDrag"
     @mouseleave="stopDrag"
     @wheel="onScroll"
+    @touchstart="startTouch" @touchmove="onTouchMove" @touchend="stopDrag"
   >
     <div class="picker-wrapper">
       <div
@@ -76,6 +77,10 @@ export default {
       this.isDragging = true;
       this.dragStartY = event.clientY;
     },
+    startTouch(event) {
+      this.isDragging = true;
+      this.dragStartY = event.touches[0].clientY; // Get the Y position of the touch
+    },
     onDrag(event) {
       if (!this.isDragging) return;
       const dragDistance = event.clientY - this.dragStartY;
@@ -88,6 +93,23 @@ export default {
             this.selectedDay === this.daysInMonth ? 1 : this.selectedDay + 1;
         }
         this.dragStartY = event.clientY;
+      }
+    },
+    onTouchMove(event) {
+      if (!this.isDragging) return;
+
+      const dragDistance = event.touches[0].clientY - this.dragStartY; // Get the Y position of the touch
+
+      if (Math.abs(dragDistance) > 30) {
+        if (dragDistance > 0) {
+          // Dragging down
+          this.selectedYear--;
+        } else {
+          // Dragging up
+          this.selectedYear++;
+        }
+        this.dragStartY = event.touches[0].clientY; // Reset for continuous drag
+        this.updateVisibleYears();
       }
     },
     stopDrag() {

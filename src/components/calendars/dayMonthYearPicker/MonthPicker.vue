@@ -6,6 +6,7 @@
     @mouseup="stopDrag"
     @mouseleave="stopDrag"
     @wheel="onScroll"
+    @touchstart="startTouch" @touchmove="onTouchMove" @touchend="stopDrag"
   >
     <div class="picker-wrapper">
       <div
@@ -73,6 +74,10 @@ export default {
     startDrag(event) {
       this.isDragging = true;
       this.dragStartY = event.clientY;
+    },
+    startTouch(event) {
+      this.isDragging = true;
+      this.dragStartY = event.touches[0].clientY; // Get the Y position of the touch
     },
     onDrag(event) {
       if (!this.isDragging) return;
