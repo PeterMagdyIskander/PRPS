@@ -58,6 +58,7 @@ export default {
         { length: this.range * 2 + 1 },
         (_, i) => (this.selectedMonth - this.range + i + 12) % 12
       );
+      this.$emit('selectedMonth',this.visibleMonths[2])
     },
     onScroll(event) {
       const delta = Math.sign(event.deltaY);

@@ -44,6 +44,7 @@
           { length: this.range * 2 + 1 },
           (_, i) => this.selectedYear - this.range + i
         );
+        this.$emit('selectedYear',this.visibleYears[2])
       },
       onScroll(event) {
         event.preventDefault();

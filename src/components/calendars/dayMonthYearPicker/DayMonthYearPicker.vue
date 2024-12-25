@@ -1,8 +1,8 @@
 <template>
   <div class="date-picker">
-    <MonthPicker v-model="selectedMonth" />
+    <MonthPicker v-model="selectedMonth" @selectedMonth="setSelectedMonth" />
     <DayPicker :month="selectedMonth" :year="selectedYear" v-model="selectedDay" />
-    <YearPicker v-model="selectedYear" />
+    <YearPicker v-model="selectedYear" @selectedYear="setSelectedYear" />
   </div>
 </template>
 
@@ -20,10 +20,18 @@ export default {
       selectedYear: new Date().getFullYear(),
     };
   },
+  methods: {
+    setSelectedMonth(selectedMonth) {
+      this.selectedMonth = selectedMonth
+    },
+    setSelectedYear(selectedYear) {
+      this.selectedYear = selectedYear
+    }
+  }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .date-picker {
   display: flex;
   gap: 1rem;
