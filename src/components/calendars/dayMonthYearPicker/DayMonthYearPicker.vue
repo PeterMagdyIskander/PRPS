@@ -33,7 +33,22 @@ export default {
 
 <style lang="scss" scoped>
 .date-picker {
+  width: 100%;
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  position:relative;
+  z-index:2;
+  &::before{
+    content: "";
+    position: absolute;
+    background-color: rgba(120, 120, 128, 0.08);
+    border-radius: 8px;
+    width: 85%;
+    height: 40px;
+    top:57px;
+    z-index: -1;
+  }
+
 }
 </style>
