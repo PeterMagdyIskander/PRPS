@@ -1,10 +1,7 @@
 <template>
   <div>
-    <!-- Trigger Button -->
-    <button @click="openMenu">Open Menu</button>
-
     <!-- Sliding Menu -->
-    <div class="sliding-menu" :class="{ 'is-open': isOpen }" ref="slidingMenu" @touchstart="onTouchStart"
+    <div class="sliding-menu" :class="{ 'is-open': menuIsOpen }" ref="slidingMenu" @touchstart="onTouchStart"
       @touchmove="onTouchMove" @touchend="onTouchEnd" @mousedown="onMouseDown">
       <div class="menu-content">
         <div class="menu-content-close-bar" @click="closeMenu"></div>
@@ -12,10 +9,17 @@
           <h1>{{ menuTitle }}</h1>
           <button @click="closeMenu">Close</button>
           <!-- Slot for custom content -->
-          <slot 
-          name="menu-content"
-          @click="handleSlotClick"
-          ></slot>
+        </div>
+        <div class="menu-content-body">
+          <slot></slot>
+        </div>
+        <div class="menu-content-footer">
+          <button>
+            {{ submitButtonTitle }}
+          </button>
+          <p>
+            DISCLAIMER: {{ disclaimer }}
+          </p>
         </div>
       </div>
     </div>
@@ -29,6 +33,21 @@ export default {
       required: true,
       type: String,
       default: "Menu Title"
+    },
+    submitButtonTitle:{
+      required: true,
+      type: String,
+      default: "Continue"
+    },
+    disclaimer:{
+      required: true,
+      type: String,
+      default: "A fee will be applied to your next session for any cancelation"
+    },
+    menuIsOpen: {
+      required: true,
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -46,11 +65,9 @@ export default {
       console.log("Slot button clicked!");
       this.$emit("slot-button-clicked");
     },
-    openMenu() {
-      this.isOpen = true;
-    },
     closeMenu() {
       this.isOpen = false;
+      this.$emit('close')
       this.resetPosition();
     },
     resetPosition() {
@@ -118,7 +135,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50%;
+  max-height: 537px;
   background-color: white;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
   transform: translateY(100%);
@@ -131,9 +148,17 @@ export default {
 }
 
 .menu-content {
+  height: 100%;
+  max-width: 342px;
+  margin: 0 auto;
   padding: 12px 24px 24px 24px;
-  
-  &-close-bar{
+  box-sizing: content-box;
+  slot {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  &-close-bar {
     width: 40px;
     height: 4px;
     border-radius: 10px;
@@ -141,24 +166,54 @@ export default {
     margin: 0 auto 12px auto;
     cursor: grab;
   }
+
   &-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    h1{
+    margin-bottom: 16px;
+
+    h1 {
       font-family: 'ArchivoBlack-Regular';
       font-size: 24px;
     }
-    button{
+
+    button {
       border: unset;
       background-color: #fff;
       font-family: 'Cairo-SemiBold';
       font-size: 18px;
       text-decoration: underline;
       color: #0044F1;
-      &:disabled{
+
+      &:disabled {
         color: #CFD1D2;
       }
+    }
+  }
+
+  &-body {
+    width: fit-content;
+    margin: 0 auto 24px auto;
+  }
+
+  &-footer {
+    width: 100%;
+    button {
+      font-family: 'Poppins-Regular';
+      font-size: 18px;
+      color: #fff;
+      padding: 10px;
+      border: 1px solid #0044F1;
+      background-color: #0044F1;
+      border-radius: 12px;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    p{
+      font-family: 'Poppins-Regular';
+      font-size: 14px;
+      color: #535A5F;
     }
   }
 }

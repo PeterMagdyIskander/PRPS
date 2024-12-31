@@ -22,19 +22,26 @@
         <div v-if="showAnswer" class="coach-container-fun-fact-answer">
             <p>Future sight</p>
         </div>
-        <button class="coach-container-request">Request Session</button>
+        <button class="coach-container-request" @click="requestSessionMenuIsOpen = true">Request Session</button>
     </div>
+    <SlidingMenu :menuIsOpen="requestSessionMenuIsOpen" menuTitle="Select session date" submitButtonTitle="Continue"
+        @close="requestSessionMenuIsOpen = false">
+        <MonthDatePicker #menu-content></MonthDatePicker>
+    </SlidingMenu>
 </template>
 
 <script>
 import AppHeader from '@/components/AppHeader.vue'
+import MonthDatePicker from '@/components/calendars/MonthDatePicker.vue';
 import CoachCard from '@/components/home/CoachCard.vue';
+import SlidingMenu from '@/components/shared/SlidingMenu.vue';
 export default {
-    components: { AppHeader, CoachCard },
+    components: { AppHeader, CoachCard, SlidingMenu, MonthDatePicker },
     name: "coach-view",
     data() {
         return {
             showAnswer: false,
+            requestSessionMenuIsOpen: false
         }
     }
 }
