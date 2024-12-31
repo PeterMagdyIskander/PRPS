@@ -38,8 +38,10 @@ export default {
 }
 
 .card{
-    width: 327px;
-    height: 337px;
+    // width: 327px;
+    width: 167px;
+    // height: 337px;
+    height: 163px;
     background-color: #F6F6F6;
     border-radius: 30px;
     // margin-bottom: 60px;
@@ -47,36 +49,46 @@ export default {
     // flex-direction: column;
     // align-items: center;
     // justify-content: flex-end;
-    padding: 60px 32px 40px 32px;
-    margin: 0 12px 60px 12px;
+    // padding: 60px 32px 40px 32px;
+    padding: 20px 14px 20px 14px;
+    // margin: 0 12px 60px 12px;
+    margin: 8px ;
     position: relative;
     
     &-info {
 
     .score{
         font-family: 'ArchivoBlack-Regular';
-        font-size: 48px;
+        // font-size: 48px; 
+        font-size: 24px; 
         color: #212C2D;
         position:absolute;
-        top:60px;
-        left:32px;
+        // top:60px;
+        top:20px;
+        // left:32px;
+        left:14px;
 
     }
     .subtitle{
         font-family: 'Poppins-Regular';
-        font-size: 20px;
+        font-size: 14px;
         backface-visibility: #535A5F;
         position:absolute;
-        top:124px;
-        left:32px;
+        // top:124px;
+        top: 51.83px;
+        // left: 32px;
+        left: 14px;
     }
     .apply{
         font-family: 'Poppins-Regular';
-        font-size: 16px;
+        // font-size: 16px;
+        font-size: 14px;
         color: #0044F1;
         position: absolute;
-        right:60px;
-        bottom:44px;
+        // right:60px;
+        right:36px;
+        // bottom:44px;
+        bottom:20px;
         // span{
             
         // }

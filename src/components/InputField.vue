@@ -1,6 +1,7 @@
 <template>
     <div class="input-field">
-        <input :type="isPassword ? 'password' : 'text'" :placeholder="placeholder">
+        <input :type="isPassword ? 'password' : 'text'" 
+        :placeholder="placeholder">
         <img v-if="password && !showPassword" @click="viewPassword()" src="@/assets/images/closed.svg"
             alt="show password">
         <img v-if="password && showPassword" @click="viewPassword()" src="@/assets/images/opened.svg"
@@ -63,9 +64,12 @@ export default {
     input {
         all: unset;
         width: 100%;
-        color: #535A5F;
+        color: #ffffff;
         font-size: 16px;
         font-family: 'Poppins-Regular';
+    }
+    input::placeholder{
+        color:#fff;
     }
     img{
         width: 24px;
