@@ -82,7 +82,7 @@ export default {
 
 <style lang="scss">
 .calendar {
-  width: 300px;
+  width: 325px;
   margin: auto;
   text-align: center;
 }

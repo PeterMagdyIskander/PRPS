@@ -129,13 +129,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+*{
+  padding:0;
+  margin:0;
+}
 /* General styles */
 .sliding-menu {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  max-height: 537px;
+  border-radius: 20px 20px 0px 0px;
   background-color: white;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
   transform: translateY(100%);
