@@ -8,6 +8,7 @@ import NotificationsView from "../views/NotificationsView.vue";
 import AllCoachesView from "../views/AllCoachesView.vue";
 import DayMonthYearPicker from "@/components/calendars/dayMonthYearPicker/DayMonthYearPicker.vue";
 import SlidingMenu from "@/components/shared/SlidingMenu.vue";
+import MyBookingsView from "@/views/MyBookingsView.vue";
 const routes = [
   {
     path: "/",
@@ -48,6 +49,11 @@ const routes = [
     path: "/notifications",
     name: "notifications",
     component: NotificationsView,
+  },
+  {
+    path: "/bookings",
+    name: "bookings",
+    component: MyBookingsView,
   },
 ];
 
