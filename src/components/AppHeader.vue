@@ -52,7 +52,6 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 62px;
     margin-bottom: 24px;
 
     .back-button {

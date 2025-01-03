@@ -138,12 +138,12 @@ export default {
         display: flex;
         align-items: center;
         column-gap: 8px;
+        margin: 24px;
 
         h1 {
             font-family: 'ArchivoBlack-Regular';
             color: #212C2D;
             font-size: 20px;
-            margin: 24px 0;
         }
 
         .unread-count {
