@@ -70,11 +70,12 @@ body {
 }
 
 .footer {
-  max-width: 342px;
+  max-width: 390px;
   margin: 0 auto;
   position: sticky;
   bottom: 0;
   background-color: #fff;
+  z-index: 1;
 
   .nav {
     width: 100%;

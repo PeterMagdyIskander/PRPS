@@ -54,7 +54,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 342px;
+    max-width: 390px;
     margin: 0 auto;
     position: relative;
 
@@ -81,7 +81,7 @@ export default {
             align-items: center;
             color: #535A5F;
             font-family: 'Poppins-Regular';
-            max-width: 342px;
+            max-width: 390px;
             margin: 24px 0;
 
             .line {
@@ -100,7 +100,7 @@ export default {
             font-size: 18px;
             font-family: 'Poppins-Regular';
             border-radius: 12px;
-            max-width: 342px;
+            max-width: 390px;
         }
 
         .login-provider {
@@ -114,7 +114,7 @@ export default {
             font-family: 'Poppins-Regular';
             color: #535A5F;
             border-radius: 12px;
-            max-width: 342px;
+            max-width: 390px;
             margin-bottom: 16px;
         }
 

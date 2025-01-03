@@ -88,7 +88,7 @@ export default {
 .logged-in-container {
     display: flex;
     flex-direction: column;
-    max-width: 342px;
+    max-width: 390px;
     margin: 0 auto;
     position: relative;
 

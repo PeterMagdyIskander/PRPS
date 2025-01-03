@@ -4,6 +4,7 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import SignupView from "../views/SignupView.vue";
 import CoachView from "../views/CoachView.vue";
+import NotificationsView from "../views/NotificationsView.vue";
 import AllCoachesView from "../views/AllCoachesView.vue";
 import DayMonthYearPicker from "@/components/calendars/dayMonthYearPicker/DayMonthYearPicker.vue";
 import SlidingMenu from "@/components/shared/SlidingMenu.vue";
@@ -42,6 +43,11 @@ const routes = [
     path: "/sliding",
     name: "sliding",
     component: SlidingMenu,
+  },
+  {
+    path: "/notifications",
+    name: "notifications",
+    component: NotificationsView,
   },
 ];
 

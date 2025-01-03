@@ -153,7 +153,7 @@ export default {
 
 .menu-content {
   height: 100%;
-  max-width: 342px;
+  max-width: 390px;
   margin: 0 auto;
   padding: 12px 24px 24px 24px;
   box-sizing: content-box;

@@ -44,7 +44,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 342px;
+    max-width: 390px;
     margin: 0 auto;
     position: relative;
 
@@ -65,7 +65,7 @@ export default {
             font-size: 18px;
             font-family: 'Poppins-Regular';
             border-radius: 12px;
-            max-width: 342px;
+            max-width: 390px;
         }
 
 
