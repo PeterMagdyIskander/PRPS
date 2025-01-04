@@ -70,6 +70,7 @@ export default {
     display: flex;
     column-gap: 12px;
 
+    border-bottom: 1px solid #D7DBDF;
     &-unread {
         width: 8px;
         height: 8px;

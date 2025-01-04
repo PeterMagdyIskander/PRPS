@@ -1,6 +1,5 @@
 <template>
     <div class="login-container">
-        <AppHeader title="Login" subtitle="Welcome back! Your next career move awaits."></AppHeader>
         <InputField class="mail" :placeholder="'Enter your email'"></InputField>
         <InputField class="password" :placeholder="'Enter your password'" :password="true"></InputField>
         <p class="forgot-password">Forgot password?</p>
@@ -26,14 +25,11 @@
 </template>
 
 <script>
-
-import AppHeader from '@/components/AppHeader.vue';
 import InputField from '@/components/InputField.vue';
 import router from '@/router'
 export default {
     name: 'LoginView',
     components: {
-        AppHeader,
         InputField
     },
     methods: {
@@ -83,6 +79,7 @@ export default {
             color: #535A5F;
             font-family: 'Poppins-Regular';
             max-width: 390px;
+box-sizing: content-box;
             margin: 24px 0;
 
             .line {
@@ -102,6 +99,7 @@ export default {
             font-family: 'Poppins-Regular';
             border-radius: 12px;
             max-width: 390px;
+box-sizing: content-box;
         }
 
         .login-provider {
@@ -116,6 +114,7 @@ export default {
             color: #535A5F;
             border-radius: 12px;
             max-width: 390px;
+box-sizing: content-box;
             margin-bottom: 16px;
         }
 

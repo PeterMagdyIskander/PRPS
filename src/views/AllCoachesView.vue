@@ -1,7 +1,5 @@
 <template>
     <div class="all-coaches-container">
-        <app-header :showBackButton="true" title="Career coaches"
-            subtitle="We've matched you with the best career coach to help you achieve your goals!"></app-header>
         <div class="all-coaches-container-coaches">
             <coach-card></coach-card>
             <coach-card></coach-card>
@@ -16,10 +14,9 @@
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader.vue'
 import CoachCard from '@/components/home/CoachCard.vue';
 export default {
-    components: { AppHeader, CoachCard },
+    components: { CoachCard },
     name: "all-coaches-view",
 }
 </script>

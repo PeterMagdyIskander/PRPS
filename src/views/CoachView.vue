@@ -1,6 +1,5 @@
 <template>
     <div class="coach-container">
-        <app-header :showBackButton="true"></app-header>
         <img class="coach-container-img" src="@/assets/images/img-coach-placeholder.svg" alt="placegolder">
         <img class="coach-container-favorite" src="@/assets/images/favorite-coach.svg" alt="favorite coach">
         <p class="coach-container-name">Peter Iskander</p>
@@ -38,13 +37,12 @@
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader.vue'
 import MonthDatePicker from '@/components/calendars/MonthDatePicker.vue';
 import CoachCard from '@/components/home/CoachCard.vue';
 import ListingValues from '@/components/shared/ListingValues.vue';
 import SlidingMenu from '@/components/shared/SlidingMenu.vue';
 export default {
-    components: { AppHeader, CoachCard, SlidingMenu, MonthDatePicker, ListingValues },
+    components: { CoachCard, SlidingMenu, MonthDatePicker, ListingValues },
     name: "coach-view",
     data() {
         return {

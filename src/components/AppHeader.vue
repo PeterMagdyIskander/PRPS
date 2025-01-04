@@ -1,5 +1,6 @@
 <template>
-    <div class="header-container" :style="[showBackButton && !title && !subtitle ? { 'margin-bottom': 0 + 'px' } : null]">
+    <div class="header-container"
+        :style="[showBackButton && !title && !subtitle ? { 'margin-bottom': 0 + 'px' } : null]">
         <img v-if="showBackButton" class="back-button" @click="reroute('/')" src="@/assets/images/back-button.svg"
             alt="back-button">
         <div v-else class="logo-container" :class="{ 'logged': getUser, 'not-logged': getUser === null }">
@@ -16,24 +17,32 @@
 
 import { mapGetters } from 'vuex';
 import router from '@/router'
+
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 export default {
     name: "app-header",
-    props: {
-        title: {
-            type: String,
-            required: false,
-        },
-        subtitle: {
-            type: String,
-            required: false,
-        },
-        showBackButton: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
+    computed: mapGetters(['getUser',]), setup() {
+        const route = useRoute();
+        const title = ref("");
+        const subtitle = ref("");
+        const showBackButton = ref("");
+
+        const updateHeader = () => {
+            title.value = route.meta.title || false;
+            subtitle.value = route.meta.subtitle || false;
+            showBackButton.value = route.meta.showBackButton || false;
+
+        };
+
+        watch(route, updateHeader, { immediate: true });
+
+        return {
+            title,
+            subtitle,
+            showBackButton
+        };
     },
-    computed: mapGetters(['getUser',]),
     methods: {
         reroute(route) {
             router.push(route)
@@ -50,10 +59,11 @@ export default {
 
 .header-container {
     width: 100%;
+    max-width: 390px;
+    padding: 16px 24px 24px 24px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 24px;
-
+    margin: 0 auto;
     .back-button {
         width: 48px;
         height: 48px;

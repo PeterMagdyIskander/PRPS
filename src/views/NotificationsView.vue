@@ -133,7 +133,6 @@ export default {
     max-width: 390px;
     margin: 0 auto;
     position: relative;
-
     &-title {
         display: flex;
         align-items: center;

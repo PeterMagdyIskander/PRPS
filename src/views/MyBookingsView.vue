@@ -60,7 +60,7 @@ export default {
                     name: "Mohie Ezz",
                 },
                 {
-                    id:5,
+                    id: 5,
                     dateTime: new Date(),
                     job: "Product designer",
                     name: "Lydia Emad",
@@ -95,6 +95,7 @@ export default {
     &-title {
         display: flex;
         align-items: center;
+        margin-top: 8px;
         column-gap: 8px;
 
         h1 {
@@ -146,7 +147,8 @@ export default {
             }
         }
     }
-    &-card-container{
+
+    &-card-container {
         display: flex;
         flex-direction: column;
         row-gap: 16px;

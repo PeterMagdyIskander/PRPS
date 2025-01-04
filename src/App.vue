@@ -1,4 +1,6 @@
 <template>
+  <AppHeader v-if="!hideHeader">
+  </AppHeader>
   <router-view />
   <nav class="footer">
     <ul class="nav">
@@ -47,12 +49,14 @@
 
 import { mapGetters } from 'vuex';
 import MoreOptionsMenuCard from './components/cards/MoreOptionsMenuCard.vue';
-
+import AppHeader from '@/components/AppHeader.vue';
 import SlidingMenu from './components/shared/SlidingMenu.vue';
+import { useRoute } from 'vue-router';
+import { ref, watch } from 'vue';
 export default {
   components: {
     SlidingMenu,
-
+    AppHeader,
     MoreOptionsMenuCard
   },
   data() {
@@ -87,7 +91,15 @@ export default {
     }
   }, methods: {
   },
-  computed: mapGetters(['getUser',]),
+  computed: mapGetters(['getUser',]), setup() {
+    const route = useRoute();
+    const hideHeader = ref("");
+    const updateHeader = () => hideHeader.value = route.meta.hideHeader || false;
+    watch(route, updateHeader, { immediate: true });
+    return {
+      hideHeader,
+    };
+  },
 }
 </script>
 <style lang="scss">

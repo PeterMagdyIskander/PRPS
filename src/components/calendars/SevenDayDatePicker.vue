@@ -156,7 +156,7 @@ export default {
   display: flex;
   align-items: center;
   column-gap: 8px;
-  margin-bottom: 60px;
+  margin-bottom: 24px;
   p {
     font-family: 'Poppins-Medium';
     font-size: 16px;

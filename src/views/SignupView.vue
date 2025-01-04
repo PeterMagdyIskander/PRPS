@@ -1,6 +1,5 @@
 <template>
     <div class="singup-container">
-        <AppHeader title="Create account" subtitle="Welcome to PRPS! Your future starts here."></AppHeader>
         <InputField class="data" :placeholder="'Enter your first name'"></InputField>
         <InputField class="data" :placeholder="'Enter your last name'"></InputField>
         <InputField class="data" :placeholder="'Enter your email'"></InputField>
@@ -16,14 +15,11 @@
 </template>
 
 <script>
-
-import AppHeader from '@/components/AppHeader.vue';
 import InputField from '@/components/InputField.vue';
 import router from '@/router'
 export default {
     name: 'SignupView',
     components: {
-        AppHeader,
         InputField
     },
     methods: {
@@ -52,11 +48,14 @@ export default {
     .data {
         margin-bottom: 16px;
     }
-    .drop-down{
+
+    .drop-down {
         margin-bottom: 227px;
     }
+
     &-actions {
         margin-bottom: 32px;
+
         .signup {
             all: unset;
             cursor: pointer;
@@ -67,6 +66,7 @@ export default {
             font-family: 'Poppins-Regular';
             border-radius: 12px;
             max-width: 390px;
+box-sizing: content-box;
         }
 
 
