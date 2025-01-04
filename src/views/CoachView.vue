@@ -26,8 +26,14 @@
     </div>
     <SlidingMenu :menuIsOpen="requestSessionMenuIsOpen" menuTitle="Select session date" submitButtonTitle="Continue"
         @close="requestSessionMenuIsOpen = false">
-        <MonthDatePicker #menu-content></MonthDatePicker>
-        <ListingValues :values="times" value-id="availableTimes"></ListingValues>
+        <template #menu-content>
+            <MonthDatePicker></MonthDatePicker>
+        </template>
+        <!-- <template #menu-content>
+            <ListingValues :values="times" value-id="availableTimes"></ListingValues>
+        </template> -->
+
+       
     </SlidingMenu>
 </template>
 
@@ -38,13 +44,13 @@ import CoachCard from '@/components/home/CoachCard.vue';
 import ListingValues from '@/components/shared/ListingValues.vue';
 import SlidingMenu from '@/components/shared/SlidingMenu.vue';
 export default {
-    components: { AppHeader, CoachCard, SlidingMenu, MonthDatePicker,ListingValues },
+    components: { AppHeader, CoachCard, SlidingMenu, MonthDatePicker, ListingValues },
     name: "coach-view",
     data() {
         return {
             showAnswer: false,
             requestSessionMenuIsOpen: false,
-            times:["11:00 AM","12:00 PM","01:00 PM","02:00 PM","03:00 PM","04:00 PM","05:00 PM","06:00 PM"]
+            times: ["11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM"]
         }
     }
 }

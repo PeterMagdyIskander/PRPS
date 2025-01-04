@@ -7,13 +7,21 @@
         <div class="menu-content-close-bar" @click="closeMenu"></div>
         <div class="menu-content-header">
           <h1>{{ menuTitle }}</h1>
-          <button @click="closeMenu">Close</button>
+          <button v-if="showButtons" @click="closeMenu">Close</button>
           <!-- Slot for custom content -->
         </div>
         <div class="menu-content-body">
-          <slot></slot>
+          <slot name="menu-content"></slot>
         </div>
-        <div class="menu-content-footer">
+        <div class="menu-content-header" v-if="moreOptionsMenu">
+          <h1>{{ secondTilte }}</h1>
+          <!-- Slot for custom content -->
+        </div>
+        <div class="menu-content-body" v-if="moreOptionsMenu">
+          <MoreOptionsMenuCard v-for="moreOptionsItem in moreOptionsItems" :key="moreOptionsItem.id"
+            :more-options-item="moreOptionsItem"></MoreOptionsMenuCard>
+        </div>
+        <div class="menu-content-footer" v-if="showButtons">
           <button>
             {{ submitButtonTitle }}
           </button>
@@ -27,19 +35,24 @@
 </template>
 
 <script>
+import MoreOptionsMenuCard from '../cards/MoreOptionsMenuCard.vue';
+
 export default {
+  components: {
+    MoreOptionsMenuCard
+  },
   props: {
     menuTitle: {
       required: true,
       type: String,
       default: "Menu Title"
     },
-    submitButtonTitle:{
+    submitButtonTitle: {
       required: true,
       type: String,
       default: "Continue"
     },
-    disclaimer:{
+    disclaimer: {
       required: true,
       type: String,
       default: "A fee will be applied to your next session for any cancelation"
@@ -48,6 +61,19 @@ export default {
       required: true,
       type: Boolean,
       default: false
+    },
+    showButtons: {
+      type: Boolean,
+      default: true
+    },
+    moreOptionsMenu: {
+      type: Boolean,
+      default: false
+    },
+    secondTilte: {
+      required: false,
+      type: String,
+      default: "Account"
     }
   },
   data() {
@@ -58,6 +84,21 @@ export default {
       deltaY: 0,
       threshold: 100, // Threshold for closing
       isDragging: false, // Track dragging state
+      moreOptionsItems: [
+        {
+          id: 1,
+          title: "Change track",
+          comingSoon: false,
+          showArrow: true
+        },
+        {
+          id: 2,
+          title: "Log out",
+          comingSoon: false,
+          showArrow: false
+        }
+      ]
+
     };
   },
   methods: {
@@ -129,10 +170,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-*{
-  padding:0;
-  margin:0;
+* {
+  padding: 0;
+  margin: 0;
 }
+
 /* General styles */
 .sliding-menu {
   position: fixed;
@@ -145,6 +187,7 @@ export default {
   transform: translateY(100%);
   transition: transform 0.3s ease;
   will-change: transform;
+  z-index: 2;
 }
 
 .sliding-menu.is-open {
@@ -157,6 +200,7 @@ export default {
   margin: 0 auto;
   padding: 12px 24px 24px 24px;
   box-sizing: content-box;
+
   slot {
     width: fit-content;
     margin: 0 auto;
@@ -197,12 +241,16 @@ export default {
   }
 
   &-body {
-    width: fit-content;
-    margin: 0 auto 24px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 8px;
+    margin-bottom: 24px;
   }
 
   &-footer {
     width: 100%;
+
     button {
       font-family: 'Poppins-Regular';
       font-size: 18px;
@@ -214,7 +262,8 @@ export default {
       width: 100%;
       margin-bottom: 8px;
     }
-    p{
+
+    p {
       font-family: 'Poppins-Regular';
       font-size: 14px;
       color: #535A5F;
