@@ -11,11 +11,11 @@
         </h1>
         <button class="header-call-to-action" @click="reroute()">Get started</button>
       </div>
-      <div class="show-up-animation">
-        <img class="header-device" src="@/assets/images/iphone-picture-landing-header.svg" loading="eager"
-          alt="shape-mobile" />
-        <img class="header-shape" src="@/assets/images/shape-mobile-view.svg" loading="eager" alt="shape-mobile">
-      </div>
+      <object class="header-device show-up-animation" type="image/svg+xml"
+      :data="require('@/assets/images/iphone-picture-landing-header.svg')"></object>
+
+      <img class="header-shape show-up-animation" src="@/assets/images/shape-mobile-view.svg" loading="eager"
+        alt="shape-mobile">
     </div>
     <Vue3Marquee class="imgs-marquee">
       <img src="@/assets/images/logos0.svg" />
@@ -292,46 +292,20 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '@/assets/sass/shared';
+
 * {
   padding: 0;
   margin: 0;
 }
 
-//   .swiper {
-//   height: 100%; /* Ensure the swiper takes the full height of the journey section */
-// }
-
-// .swiper-pagination {
-//   position: absolute; /* Position it absolutely */
-//   bottom: 20px; /* Adjust this value to move it up or down */
-//   left: 50%; /* Center it horizontally */
-//   transform: translateX(-50%); /* Adjust for centering */
-//   display: flex !important; /* Ensure bullets are displayed inline */
-//   justify-content: center; /* Center the bullets */
-// }
-
-// .swiper-pagination-bullet {
-//   width: 12px; /* Width of the bullet */
-//   height: 12px; /* Height of the bullet */
-//   background: #0044F1; /* Color of the bullet */
-//   border-radius: 50%; /* Make it circular */
-//   opacity: 0.5; /* Default opacity */
-//   transition: opacity 0.3s; /* Smooth transition for hover effect */
-//   margin: 0 5px; /* Space between bullets */
-// }
-
-// .swiper-pagination-bullet-active {
-//   opacity: 1; /* Full opacity for the active bullet */
-// }
 .home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px;
+  @extend %standard-logged-in-container;
 }
 
 .header {
   width: 100%;
+  min-height: 680px;
   box-sizing: border-box;
   background-image: linear-gradient(#0044F1, #4E7CF1);
   border-radius: 50px;
@@ -373,31 +347,85 @@ export default {
     color: #0044F1;
   }
 
-  &-device {
-    object-fit: contain;
-    margin-top: -20px;
-    position: relative;
-    z-index: 1;
-    width: 380px;
+  .show-up-animation {
+    animation: autoShowUpAnimation 1000ms;
   }
 
-  &-shape {
-    position: absolute;
-    z-index: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    min-width: 469px;
-    width: 100%;
-    max-width: 969px;
+  @keyframes autoShowUpAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(200px);
+    }
 
-    @media(max-width: 390px) {
-      left: -70px;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
+  .show-down-animation {
+    animation: autoShowDownAnimation 1000ms;
+  }
+
+  @keyframes autoShowDownAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &-device {
+    width: 428px;
+    position: absolute;
+    bottom: 0;
+    left: -94px;
+    z-index: 1;
+  }
+
+  &-shape {
+    width: 512px;
+
+    position: absolute;
+    bottom: 0;
+    left: -85px;
+  }
+
 }
+
+//   .swiper {
+//   height: 100%; /* Ensure the swiper takes the full height of the journey section */
+// }
+
+// .swiper-pagination {
+//   position: absolute; /* Position it absolutely */
+//   bottom: 20px; /* Adjust this value to move it up or down */
+//   left: 50%; /* Center it horizontally */
+//   transform: translateX(-50%); /* Adjust for centering */
+//   display: flex !important; /* Ensure bullets are displayed inline */
+//   justify-content: center; /* Center the bullets */
+// }
+
+// .swiper-pagination-bullet {
+//   width: 12px; /* Width of the bullet */
+//   height: 12px; /* Height of the bullet */
+//   background: #0044F1; /* Color of the bullet */
+//   border-radius: 50%; /* Make it circular */
+//   opacity: 0.5; /* Default opacity */
+//   transition: opacity 0.3s; /* Smooth transition for hover effect */
+//   margin: 0 5px; /* Space between bullets */
+// }
+
+// .swiper-pagination-bullet-active {
+//   opacity: 1; /* Full opacity for the active bullet */
+// }
+
+
+
 
 .imgs-marquee {
 
@@ -451,38 +479,6 @@ export default {
   display: flex; // Use flexbox to center content
   // justify-content: center; // Center horizontally
   // align-items: center; // Center vertically
-}
-
-.show-up-animation {
-  animation: autoShowUpAnimation 1000ms;
-}
-
-@keyframes autoShowUpAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(200px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.show-down-animation {
-  animation: autoShowDownAnimation 1000ms;
-}
-
-@keyframes autoShowDownAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(-200px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .our-experts-sec {
