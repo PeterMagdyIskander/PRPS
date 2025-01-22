@@ -5,7 +5,7 @@
             alt="back-button">
         <div v-else class="logo-container" :class="{ 'logged': getUser, 'not-logged': getUser === null }">
             <img @click="reroute('/')" src="@/assets/images/logo.svg" alt="logo">
-            <img @click="reroute()" v-if="getUser" src="@/assets/images/heart.svg" alt="heart">
+            <img @click="reroute('/')" v-if="getUser" src="@/assets/images/heart.svg" alt="heart">
         </div>
 
         <p class="title" v-if="title">{{ title }}</p>

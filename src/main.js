@@ -6,11 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import './assets/sass/style.scss'
 import Vue3Marquee from 'vue3-marquee'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination, Navigation } from 'swiper/modules'
-import "swiper/scss"
-import "swiper/scss/pagination"
-import "swiper/scss/navigation"
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
 // register Swiper custom elements

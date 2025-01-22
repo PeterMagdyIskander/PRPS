@@ -1,8 +1,8 @@
 <template>
-  <AppHeader v-if="!hideHeader">
+  <AppHeader v-if="!hideHeader && getUser != null">
   </AppHeader>
   <router-view />
-  <nav class="footer">
+  <nav class="footer" v-if="getUser != null">
     <ul class="nav">
       <li>
         <router-link to="/">
@@ -102,7 +102,7 @@ export default {
   },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   padding: 0;
   margin: 0;

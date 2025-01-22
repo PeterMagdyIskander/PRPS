@@ -55,19 +55,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@import '@/assets/sass/shared';
 * {
     padding: 0;
     margin: 0;
 }
 
 .coach-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 390px;
-    padding: 16px 24px 24px 24px;
-    margin: 0 auto;
-    position: relative;
-
+    @extend %standard-logged-in-container;
+    
     &-img {
         width: 100%;
         aspect-ratio: 1;

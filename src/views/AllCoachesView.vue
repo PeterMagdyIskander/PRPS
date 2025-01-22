@@ -22,20 +22,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/sass/shared';
 * {
     padding: 0;
     margin: 0;
 }
 
 .all-coaches-container {
-    display: flex;
-    flex-direction: column;
+    @extend %standard-logged-in-container;
+    
     align-items: center;
-    max-width: 390px;
-    padding: 16px 24px 24px 24px;
-    margin: 0 auto;
-    position: relative;
-
     &-coaches {
         display: flex;
         align-items: center;

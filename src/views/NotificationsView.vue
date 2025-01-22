@@ -122,17 +122,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/sass/shared';
 * {
     padding: 0;
     margin: 0;
 }
 
 .notifications-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 390px;
-    margin: 0 auto;
-    position: relative;
+    @extend %standard-logged-in-container;
+    padding: 0;
     &-title {
         display: flex;
         align-items: center;

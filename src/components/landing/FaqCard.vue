@@ -1,18 +1,4 @@
 <template>
-    <!-- <div class="card">
-        <div class="card-info">
-            <!-- <div class="card-info-titles"> -->
-                <!-- <p class="name">{{ question }}</p>
-                <img @click="showAbout = !showAbout" :class="{ 'rotated': showAbout }"
-                    src="@/assets/images/arrow-down.svg" alt="arrow-down"> -->
-            <!-- </div> -->
-        <!-- </div>
-        <transition name="slide-fade"> -->
-            <!-- <div v-if="showAbout" class="additional-content">
-                <p class="about" v-if="showAbout">{{ answer }}</p>
-            </div>
-        </transition> -->
-    <!-- </div> --> 
     <div class="card">
         <div class="main-part">
             <div class="card-info">

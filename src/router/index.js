@@ -13,7 +13,9 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
-    meta: { title: `Welcome, ${store.state.user.name}! 🙌`, subtitle: "Let's connect you with the best career coach!", showBackButton: false },
+    meta: { title: `Welcome, ${store.state.user?.name}! 🙌`,
+            subtitle: "Let's connect you with the best career coach!", 
+            showBackButton: false },
   },
   {
     path: "/login",
