@@ -12,7 +12,7 @@
         <button class="header-call-to-action" @click="reroute()">Get started</button>
       </div>
       <object class="header-device show-up-animation" type="image/svg+xml"
-      :data="require('@/assets/images/iphone-picture-landing-header.svg')"></object>
+        :data="require('@/assets/images/iphone-picture-landing-header.svg')"></object>
 
       <img class="header-shape show-up-animation" src="@/assets/images/shape-mobile-view.svg" loading="eager"
         alt="shape-mobile">
@@ -41,27 +41,39 @@
       <h1 class="separator-title">How to use</h1>
     </div>
 
-    <div class="journey">
-      <HowToUseSwiper :slides="howToUseSlides">
-      </HowToUseSwiper>
-    </div>
+    <swiper pagination>
+      <swiper-slide v-for="(item, index) in howToUse" :key="index">
+        <HowToUseCard :index="index" :slide="item">
+
+        </HowToUseCard>
+      </swiper-slide>
+    </swiper>
+
 
     <div class="separator">
       <img src="@/assets/images/prps-logo.svg" alt="prps-logo">
       <h1 class="separator-title">Meet Our Experts</h1>
     </div>
-    <Vue3Marquee :animate-on-overflow-only="true" :pause-on-click="true">
-      <ExpertCard></ExpertCard>
-      <ExpertCard></ExpertCard>
-      <ExpertCard></ExpertCard>
-      <ExpertCard></ExpertCard>
-    </Vue3Marquee>
 
-    <div class="our-experts-sec">
-      <processCard score="10000" subtitle="PRPS Users"></processCard>
-      <processCard score="720" subtitle="Internships"></processCard>
-      <processCard score="8500" subtitle="Coaching hours"></processCard>
-      <processCard score="300" subtitle="Coaches & Mentors"></processCard>
+    <swiper pagination>
+      <swiper-slide v-for="index in 2" :key="index">
+        <div class="expert-card-container">
+          <ExpertCard></ExpertCard>
+          <ExpertCard></ExpertCard>
+        </div>
+      </swiper-slide>
+    </swiper>
+
+
+    <div class="apply-now-container">
+      <div class="apply-card-container">
+        <ApplyNowCard score="10000" subtitle="PRPS Users"></ApplyNowCard>
+        <ApplyNowCard score="720" subtitle="Internships"></ApplyNowCard>
+      </div>
+      <div class="apply-card-container">
+        <ApplyNowCard score="8500" subtitle="Coaching hours"></ApplyNowCard>
+        <ApplyNowCard score="300" subtitle="Coaches & Mentors"></ApplyNowCard>
+      </div>
     </div>
 
 
@@ -70,102 +82,57 @@
         <img :class="{ 'up-corner': showAbout }" class="shape-1 " src="@/assets/images/what-users-love-shape1.svg"
           alt="shape1">
       </div>
-
       <div class="what-users-love-sec-header">
         <h3 class="what-users-love-sec-header-title">What users love about</h3>
         <div class="logo">
           <div class="logo-arrow">
             <img src="@/assets/images/prps-logo.svg" alt="prps-logo">
           </div>
-          <h1 class="logo-separator-title">PRPS</h1>
+          <h1 class="logo-title">PRPS</h1>
         </div>
       </div>
-
 
       <div class="article">
         <div class="author">
           <div class="author-info">
-            <div class="author-img"><img src="@/assets/images/landing-page-article-author.svg" alt="article-author">
-            </div>
+            <img class="" src="@/assets/images/landing-page-article-author.svg" alt="article-author">
             <div class="author-exp">
-              <div class="author-name">Layla Ahmed</div>
+              <h3 class="author-name">Layla Ahmed</h3>
               <div class="author-rating">
-                <div class="star"> <img src="@/assets/images/star.svg" alt="star"></div>
-                <div class="rating">4.8</div>
+                <img src="@/assets/images/star.svg" alt="star">
+                <span>4.8</span>
               </div>
             </div>
           </div>
-          <div class="content">
-            <p>“Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit
-              placerat Nullam volutpat lorem. at diam massa vehicula,
-              ex. quis libero, lacus, fringilla Ut urna quam sed vehicula, sodales. in nec sollicitudin. cursus faucibus
-              quis ultrices Donec eget tortor. at, faucibus non”</p>
-          </div>
+
+          <p class="content">"Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam
+            ipsum sit
+            placerat Nullam volutpat lorem. at diam massa vehicula,
+            ex. quis libero, lacus, fringilla Ut urna quam sed vehicula, sodales. in nec sollicitudin. cursus faucibus
+            quis ultrices Donec eget tortor. at, faucibus non"</p>
+
         </div>
       </div>
+
       <div v-if="showAbout">
         <img :class="{ 'bottom-corner': showAbout }" class="shape-2" src="@/assets/images/what-users-love-shape2.svg"
           alt="shape2">
       </div>
-      <!-- </div> -->
     </div>
+
     <div class="separator">
       <img src="@/assets/images/prps-logo.svg" alt="prps-logo">
       <h1 class="separator-title">Our values</h1>
     </div>
 
 
-    <!-- <div class="journey our-values-sec">
-      <swiper 
-      :pagination="{clickable:true}"
-      :modules="modules"
-      @swiper="onSwiper"
-      @slideChange="onSlideChange"
-      >
-        <swiper-slide>
-          <div class="our-values-sec-card">
-            <div class="our-values-sec-card-title">
-              <h1>Integrity</h1>
-            </div>
-            <div class="our-values-sec-card-subtitle">
-              <p>“Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula, </p>
-            </div>
-          </div>
-          <img src="@/assets/images/ourvalues.svg" alt="img">
-        </swiper-slide>
+    <swiper pagination>
+      <swiper-slide v-for="(item, index) in ourValues" :key="index">
+        <OurValuesCard :index="index" :slide="item">
 
-        <swiper-slide >
-          <div class="our-values-sec-card">
-            <div class="our-values-sec-card-title">
-              <h1>Integrity</h1>
-            </div>
-            <div class="our-values-sec-card-subtitle">
-              <p>“Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula,
-              </p>
-            </div>
-          </div>
-        </swiper-slide>
-
-        <swiper-slide >
-          <div class="our-values-sec-card">
-            <div class="our-values-sec-card-title">
-              <h1>Integrity</h1>
-            </div>
-            <div class="our-values-sec-card-subtitle">
-              <p>“Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula,
-              </p>
-            </div>
-          </div>
-          
-        </swiper-slide>
-      </swiper>
-    </div> -->
-
-
-    <div class="journey-two">
-      <!-- <OurValuesSwiper :slides="swiperSlides" >
-      </OurValuesSwiper> -->
-    </div>
+        </OurValuesCard>
+      </swiper-slide>
+    </swiper>
 
 
     <div class="separator">
@@ -177,46 +144,49 @@
       <FaqCard question="What is PRPS?"
         answer="PRPS is a platform that connects students with career coaches and industry experts to help them achieve their career goals and discover their true purpose.">
       </FaqCard>
-      <FaqCard question="What is PRPS?"
+      <FaqCard question="How do I sign up for PRPS?"
         answer="PRPS is a platform that connects students with career coaches and industry experts to help them achieve their career goals and discover their true purpose.">
       </FaqCard>
-      <FaqCard question="What is PRPS?"
+      <FaqCard question="Is PRPS free to use?"
+        answer="PRPS is a platform that connects students with career coaches and industry experts to help them achieve their career goals and discover their true purpose.">
+      </FaqCard>
+      <FaqCard question="What services does PRPS offer?"
+        answer="PRPS is a platform that connects students with career coaches and industry experts to help them achieve their career goals and discover their true purpose.">
+      </FaqCard>
+      <FaqCard question="How do I book a session with a career coach?"
         answer="PRPS is a platform that connects students with career coaches and industry experts to help them achieve their career goals and discover their true purpose.">
       </FaqCard>
     </div>
-  </div>
 
 
-  <div @click="showAbout2 = true" class="journey contact-sec">
+    <div class="journey contact-sec">
 
-    <div v-if="showAbout2">
-      <img :class="{ 'up-right-corner': showAbout }" class="shape " src="@/assets/images/contact-us.svg" alt="shape1">
-    </div>
+      <img class="shape " src="@/assets/images/contact-us.svg" alt="shape1">
+      
 
-    <div class="contact-sec-header">
-      <img class="contact-sec-header-logo" src="@/assets/images/prps-logo.svg" alt="prps-logo">
-      <h1 class="contact-sec-header-title">Contact Us</h1>
-    </div>
+      <div class="contact-sec-header">
+        <img class="contact-sec-header-logo" src="@/assets/images/prps-logo.svg" alt="prps-logo">
+        <h1 class="contact-sec-header-title">Contact Us</h1>
+      </div>
 
-    <InputField class="field" placeholder="Enter your name"></InputField>
-    <InputField class="field" placeholder="Enter your email"></InputField>
-    <InputField class="field" placeholder="Enter your phone number"></InputField>
-    <InputField class="field" placeholder="Share your thoughts with us" style="height: 240px"></InputField>
-    <button class="button">Send</button>
-    <div class="footer">
-      <p class="footer-subtitle">
-        Follow us on
-      </p>
-      <div class="footer-imgs">
-        <img class="footer-img" src="@/assets/images/footer-facebook.svg" alt="facebook">
-        <img class="footer-img" src="@/assets/images/instagram.svg" alt="instagram">
-        <img class="footer-img" src="@/assets/images/linkdin.svg" alt="linkdin">
-        <img class="footer-img" src="@/assets/images/Vector.svg" alt="X">
+      <InputField class="field" placeholder="Enter your name"></InputField>
+      <InputField class="field" placeholder="Enter your email"></InputField>
+      <InputField class="field" placeholder="Enter your phone number"></InputField>
+      <InputField class="field" placeholder="Share your thoughts with us" style="height: 240px"></InputField>
+      <button class="button">Send</button>
+      <div class="footer">
+        <p class="footer-subtitle">
+          Follow us on
+        </p>
+        <div class="footer-imgs">
+          <img class="footer-img" src="@/assets/images/footer-facebook.svg" alt="facebook">
+          <img class="footer-img" src="@/assets/images/instagram.svg" alt="instagram">
+          <img class="footer-img" src="@/assets/images/linkdin.svg" alt="linkdin">
+          <img class="footer-img" src="@/assets/images/Vector.svg" alt="X">
+        </div>
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -224,58 +194,62 @@
 import router from '@/router'
 import { Vue3Marquee } from 'vue3-marquee'
 import ExpertCard from '@/components/landing/ExpertCard.vue';
-import ProcessCard from '@/components/landing/ProcessCard.vue';
+import ApplyNowCard from '@/components/landing/ApplyNowCard.vue';
 import FaqCard from '@/components/landing/FaqCard.vue';
-import HowToUseSwiper from '@/components/landing/HowToUseSwiper.vue'
 import InputField from '@/components/InputField.vue';
-
+import HowToUseCard from '@/components/cards/HowToUseCard.vue';
+import OurValuesCard from '@/components/cards/OurValuesCard.vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.css';
 export default {
   name: 'LandingPage',
   components: {
     Vue3Marquee,
     ExpertCard,
-    ProcessCard,
+    ApplyNowCard,
     FaqCard,
     InputField,
-    HowToUseSwiper
+    HowToUseCard,
+    Swiper,
+    SwiperSlide,
+    OurValuesCard
   },
   data() {
     return {
       imgs: [
         '@/assets/images/logos1.svg'
       ],
-      showAbout: false,
-      showAbout2: false,
-      swiperSlides: [
+      ourValues: [
         {
           title: 'Integrity',
-          subtitle: '“Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula,',
+          paragraph: 'Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula,',
           image: require('@/assets/images/ourvalues.svg')
         },
         {
           title: 'Sustainability',
-          subtitle: '“Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula,',
+          paragraph: 'Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula,',
           image: require('@/assets/images/ourvalues-2.svg')
         },
         {
           title: 'Human-based Innovation',
-          subtitle: '“Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula,',
+          paragraph: 'Praesent sit elementum odio adipiscing efficitur. nibh urna. libero, in vehicula, dui. Nam ipsum sit placerat Nullam volutpat lorem. at diam massa vehicula,',
           image: require('@/assets/images/ourvalues-3.svg')
         }
-        // Add more slides as needed
       ],
-      howToUseSlides: [
+
+      howToUse: [
         {
           title: 'Choose your path. Start shaping your future today.',
-          image: require('@/assets/images/how-to-use-mobile-rectangle.svg')
+          image: require('@/assets/images/how-to-use-1.svg'),
+          index: 0,
         },
         {
           title: 'Choose your path. Start shaping your future today.',
-          image: require('@/assets/images/how-to-use-mobile-rectangle.svg')
+          image: require('@/assets/images/how-to-use-2.svg')
         },
         {
           title: 'Choose your path. Start shaping your future today.',
-          image: require('@/assets/images/how-to-use-mobile-rectangle.svg')
+          image: require('@/assets/images/how-to-use-3.svg')
         },
 
       ],
@@ -397,35 +371,32 @@ export default {
 
 }
 
-//   .swiper {
-//   height: 100%; /* Ensure the swiper takes the full height of the journey section */
-// }
+:deep(.swiper-pagination-bullet) {
+  background-color: rgba(0, 68, 241, 0.8);
+}
 
-// .swiper-pagination {
-//   position: absolute; /* Position it absolutely */
-//   bottom: 20px; /* Adjust this value to move it up or down */
-//   left: 50%; /* Center it horizontally */
-//   transform: translateX(-50%); /* Adjust for centering */
-//   display: flex !important; /* Ensure bullets are displayed inline */
-//   justify-content: center; /* Center the bullets */
-// }
+:deep(.swiper-pagination-bullet-active) {
+  background-color: #0044F1;
+}
 
-// .swiper-pagination-bullet {
-//   width: 12px; /* Width of the bullet */
-//   height: 12px; /* Height of the bullet */
-//   background: #0044F1; /* Color of the bullet */
-//   border-radius: 50%; /* Make it circular */
-//   opacity: 0.5; /* Default opacity */
-//   transition: opacity 0.3s; /* Smooth transition for hover effect */
-//   margin: 0 5px; /* Space between bullets */
-// }
+.expert-card-container {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+}
 
-// .swiper-pagination-bullet-active {
-//   opacity: 1; /* Full opacity for the active bullet */
-// }
+.apply-now-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin-bottom: 60px;
 
-
-
+  .apply-card-container {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+}
 
 .imgs-marquee {
 
@@ -444,6 +415,7 @@ export default {
 .separator {
   display: flex;
   align-items: center;
+  justify-content: center;
   column-gap: 8px;
   margin: 16px 0;
 
@@ -457,50 +429,19 @@ export default {
 
 .journey {
   width: 100%;
-  height: 780px;
   box-sizing: border-box;
   border-radius: 50px;
   background-color: #F6F6F6;
   margin-bottom: 44px;
   overflow: hidden;
-  // display:flex;
-  // justify-content: center;
-  // align-items: center;
 }
 
-.journey-two {
-  width: 100%;
-  height: 780px;
-  box-sizing: border-box;
-  border-radius: 50px;
-  background-color: #F6F6F6;
-  margin-bottom: 44px;
-  overflow: hidden; // Ensure content does not overflow
-  display: flex; // Use flexbox to center content
-  // justify-content: center; // Center horizontally
-  // align-items: center; // Center vertically
-}
-
-.our-experts-sec {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
 
 .what-users-love-sec {
   width: 100%;
-  // height: 100%;
-  margin: 0;
-  padding: 0;
-  // top:0;
-  // box-sizing: border-box;
   background-image: linear-gradient(#4E7CF1, #0044F1);
   border-radius: 50px;
-  padding: 140px 24px 40px 24px;
-  // text-align: center;
-  position: relative;
-  // overflow: hidden;
+  padding: 60px 24px 40px 24px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -556,51 +497,28 @@ export default {
     flex-direction: column;
     justify-content: center;
 
-
     &-title {
       font-family: 'ArchivoBlack-Regular';
       color: #ffffff;
       font-weight: 400;
       font-size: 24px;
-      display: flex;
-      justify-content: center;
-      text-align: centre;
-      // margin: auto;
     }
 
     .logo {
       background: #ffffff;
       width: 110px;
-      height: 48px;
       border-radius: 15px;
-      margin: 8px 0 8px 24px;
+      padding: 12px;
+      margin: 8px 0 15px 0;
       display: flex;
-      flex-direction: row;
       justify-content: center;
       align-items: center;
-      // position:absolute;
-      left: 0;
 
-      &-arrow {
-        // position:absolute;
-        // left:36.91px;
-        display: flex;
-        justify-content: center;
-        // text-align: center;
-        align-items: center;
-
-      }
-
-      &-separator-title {
+      &-title {
         color: #0044F1;
         font-size: 24px;
         font-weight: bold;
-        // position:absolute;
-        // left:62.05px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 2px // text-align: center;
       }
     }
   }
@@ -608,23 +526,21 @@ export default {
   .article {
     background: rgba(255, 255, 255, 0.46);
     border-radius: 25px;
-    width: 294px;
-    height: 475px;
+    width: 100%;
     padding: 16px;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    margin: auto;
 
     .author {
       &-info {
         display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+        align-items: center;
+        column-gap: 8px;
+        margin-bottom: 60px;
 
         .author-img {
-          padding: 10px;
+          width: 40px;
+          height: 40px;
         }
 
         .author-exp {
@@ -633,18 +549,29 @@ export default {
           justify-content: center;
         }
 
+        .author-name {
+          font-family: 'Poppins-Regular';
+          color: #fff;
+          font-size: 14px;
+        }
+
         .author-rating {
           display: flex;
-          flex-direction: row;
+          align-items: center;
+          column-gap: 4px;
+
+          span {
+            font-family: 'Poppins-Regular';
+            color: #fff;
+            font-size: 14px;
+          }
         }
       }
 
       .content {
-        font-family: 'Poppins-Regular';
+        font-family: 'Poppins-medium';
         font-size: 16px;
-        height: 100%;
-        display: flex;
-        align-items: center;
+        color: #fff;
       }
     }
   }
@@ -652,41 +579,21 @@ export default {
 
 .contact-sec {
   width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  padding: 60px 24px 40px 24px;
   background-image: linear-gradient(#0044F1, #4E7CF1);
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  // justify-content: space-around;
+  position: relative;
   .shape {
     position: absolute;
     right: 0;
     top: 0;
   }
 
-  .up-right-corner {
-    animation: moveFromTopRightCorner 1000ms ease-out;
-  }
-
-  @keyframes moveFromTopRightCorner {
-    from {
-      top: -100px;
-      right: -100px;
-    }
-
-    to {
-      top: 0;
-      right: 0;
-    }
-  }
-
   &-header {
     display: flex;
-    margin-top: 102px;
+    margin: 102px 0 24px 0;
 
     &-logo {
       padding: 8px;
@@ -699,21 +606,17 @@ export default {
       font-size: 24px
     }
   }
-
-  .field {
-    margin: 24px 24px 12px 24px;
-
+  .field{
+    margin-bottom: 12px;
   }
-
   .button {
     border-radius: 12px;
-    ;
-    width: 60%;
+    width: 100%;
+    margin-bottom: 48px;
     padding: 10px 12px;
     border: none;
     color: #0044F1;
     font-family: 'Poppins-Regular';
-    font-weight: 400;
     font-size: 18px;
   }
 
@@ -721,50 +624,15 @@ export default {
     &-subtitle {
       font-family: 'ArchivoBlack-Regular';
       color: #ffffff;
-      font-weight: 400;
       font-size: 16px;
       text-align: center;
     }
 
     &-imgs {
       display: flex;
-      flex-direction: row;
-      gap: 10px;
+      gap: 20px;
       cursor: pointer;
     }
   }
 }
-
-// .our-values-sec{
-//   display:flex;
-//     flex-direction: column;
-//     // justify-content: center;
-//     width:100%;
-//     height: 780px;
-//     position:relative;
-
-//   &-card{
-//     width:100%;
-//     max-width: 300px;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     margin: 120px 0 0 24px;
-//     // height: 100%;
-//     &-title{
-//       font-family: 'ArchivoBlack-Regular';
-//     font-weight: 400;
-//     font-size: 32px;
-//     margin-bottom: 24px;
-
-//     }
-//     &-subtitle{
-//       font-family: 'Poppins-Regular';
-//     font-weight: 400;
-//     font-size: 18px;
-//     }
-//   }
-//   img{
-//     width:100%;
-//     height: 100%;
-//   }
-// }</style>
+</style>

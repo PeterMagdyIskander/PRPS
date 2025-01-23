@@ -7,11 +7,9 @@
                     src="@/assets/images/arrow-down.svg" alt="arrow-down">
             </div>
         </div>
-        <div class="additional-part">
-            <div v-if="showAbout" class="additional-content">
-                <p class="about" v-if="showAbout">{{ answer }}</p>
+        <div v-if="showAbout" class="additional-content">
+            <p class="about" v-if="showAbout">{{ answer }}</p>
         </div>
-    </div>
     </div>
 </template>
 <script>
@@ -45,27 +43,23 @@ export default {
 
 .card {
     width: 342px;
-    border-radius: 16px ;
+    border-radius: 16px;
     margin-bottom: 16px;
     padding: 0;
-    border:none;
-    // background: rgba($color: #000, $alpha: 0.05);
-    // padding: 12px 18px;
-    // margin: 16px 24px;
-    .main-part{
-        width:342px;
+    border: none;
+
+    .main-part {
+        width: 342px;
         border-radius: 16px;
-        background: rgba($color: #000, $alpha: 0.05);
+        background: rgba(0, 0, 0, 0.05);
         padding: 12px 18px;
-        // margin: 16px 24px;
-        // border-radius: 16px solid ;
-    
-    .card-info {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 8px;
+
+        .card-info {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
 
             p.name {
                 font-family: 'Poppins-Regular';
@@ -85,46 +79,20 @@ export default {
                 }
             }
 
-            // .about {
-            //     font-family: 'Poppins-Regular';
-            //     font-size: 16px;
-            //     color: #535a5f;
-            //     height: 85px;
-            //     padding: 16px;
-            // }
-
-            .additional-content {
-                width: 100%;
-                background: #fff;
-                border-radius: 0 0 16px 16px;
-                padding: 12px 18px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                transition: 0.3s ;
-
-                .about {
-                    font-family: 'Poppins-Regular';
-                    font-size: 16px;
-                }
-            }
         }
+    }
 
-        .slide-fade-enter-active,
-        .slide-fade-leave-active {
-            transition: all 0.3s ease;
+    .additional-content {
+        width: 100%;
+        background: #fff;
+        border-radius: 0 0 16px 16px;
+        padding: 12px 18px;
+
+        .about {
+            font-family: 'Poppins-Regular';
+            font-size: 16px;
+            color: rgba(83, 90, 95, 1);
         }
-
-        .slide-fade-enter,
-        .slide-fade-leave-to {
-            opacity: 0;
-            transform: translateY(-10px);
-            }
-        }}
-
-
-
-        // .marginBottom{
-        //     margin-bottom: 12px;
-        // }</style>
+    }
+}
+</style>

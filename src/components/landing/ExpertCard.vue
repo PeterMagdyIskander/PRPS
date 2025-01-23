@@ -45,11 +45,10 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    padding: 10px;
-    margin: 0 12px 60px 12px;
+    margin-bottom: 44px;
     
     &-info {
-        width: 100%;
+        width: 90%;
         height: 60px;
         background-color: rgba($color: #000000, $alpha: 0.6);
         border-radius: 12px;
@@ -57,13 +56,13 @@ export default {
         align-items: center;
         justify-content: space-between;
         padding: 8px;
-
+        margin:10px;
         overflow-y: hidden;
         &-titles {
             
             overflow-y: hidden;
             .name {
-                font-family: 'Poppins-Regular';
+                font-family: 'Poppins-medium';
                 font-size: 14px;
                 color: #fff;
             }
