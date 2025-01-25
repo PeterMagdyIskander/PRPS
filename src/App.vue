@@ -1,5 +1,5 @@
 <template>
-  <AppHeader v-if="!hideHeader && getUser != null">
+  <AppHeader v-if="!hideHeader">
   </AppHeader>
   <router-view />
   <nav class="footer" v-if="getUser != null">

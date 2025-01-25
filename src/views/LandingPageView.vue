@@ -162,17 +162,17 @@
     <div class="journey contact-sec">
 
       <img class="shape " src="@/assets/images/contact-us.svg" alt="shape1">
-      
+
 
       <div class="contact-sec-header">
         <img class="contact-sec-header-logo" src="@/assets/images/prps-logo.svg" alt="prps-logo">
         <h1 class="contact-sec-header-title">Contact Us</h1>
       </div>
 
-      <InputField class="field" placeholder="Enter your name"></InputField>
-      <InputField class="field" placeholder="Enter your email"></InputField>
-      <InputField class="field" placeholder="Enter your phone number"></InputField>
-      <InputField class="field" placeholder="Share your thoughts with us" style="height: 240px"></InputField>
+      <InputField class="field" placeholder="Enter your name" :contactUs="true"></InputField>
+      <InputField class="field" placeholder="Enter your email" :contactUs="true"></InputField>
+      <InputField class="field" placeholder="Enter your phone number" :contactUs="true"></InputField>
+      <InputField class="field" placeholder="Share your thoughts with us" :contactUs="true" style="height: 240px"></InputField>
       <button class="button">Send</button>
       <div class="footer">
         <p class="footer-subtitle">
@@ -585,6 +585,7 @@ export default {
   flex-direction: column;
   align-items: center;
   position: relative;
+
   .shape {
     position: absolute;
     right: 0;
@@ -606,9 +607,11 @@ export default {
       font-size: 24px
     }
   }
-  .field{
+
+  .field {
     margin-bottom: 12px;
   }
+
   .button {
     border-radius: 12px;
     width: 100%;
@@ -626,6 +629,7 @@ export default {
       color: #ffffff;
       font-size: 16px;
       text-align: center;
+      margin-bottom: 16px;
     }
 
     &-imgs {

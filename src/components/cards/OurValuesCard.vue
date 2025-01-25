@@ -2,7 +2,7 @@
     <div class="card-container">
         <h3 class="card-container-title">{{ slide.title }}</h3>
         <p class="card-container-paragraph ">{{ slide.paragraph }}</p>
-        <img class="card-container-image" :src="slide.image" alt="img">
+        <img class="card-container-image" :src="slide.image" alt="img" :class="`img-${index}`">
     </div>
 </template>
 
@@ -12,6 +12,10 @@ export default {
     props: {
         slide: {
             type: Object,
+            required: true
+        },
+        index: {
+            type: Number,
             required: true
         }
     },
@@ -31,6 +35,7 @@ export default {
     margin-bottom: 44px;
     position: relative;
     overflow: hidden;
+
     &-title {
         font-family: 'ArchivoBlack-Regular';
         font-size: 32px;
@@ -46,8 +51,21 @@ export default {
         text-align: left;
         margin-bottom: 24px;
     }
-    &-image{
+
+    &-image {
         position: absolute;
+    }
+    .img-0{
+        right: -32px;
+        bottom: -61px;
+    }
+    .img-1{
+        left: 0;
+        bottom: 0;
+    }
+    .img-2{
+        left: 0;
+        bottom: -11px;
     }
 }
 </style>

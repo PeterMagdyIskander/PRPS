@@ -1,10 +1,13 @@
 <template>
     <div class="login-container">
-        <InputField class="mail" :placeholder="'Enter your email'"></InputField>
-        <InputField class="password" :placeholder="'Enter your password'" :password="true"></InputField>
+        <InputField class="mail" :placeholder="'Enter your email'" :modelValue="userName"
+            @update:model-value="handleUsernameUpdate"></InputField>
+        <InputField class="password" :placeholder="'Enter your password'" :password="true" :modelValue="password"
+            @update:model-value="handlePasswordUpdate">
+        </InputField>
         <p class="forgot-password">Forgot password?</p>
         <div class="login-container-actions">
-            <button class="login">
+            <button class="login" @click="login()">
                 Login
             </button>
             <div class="separator">
@@ -25,6 +28,8 @@
 </template>
 
 <script>
+
+import { mapActions } from 'vuex';
 import InputField from '@/components/InputField.vue';
 import router from '@/router'
 export default {
@@ -32,9 +37,34 @@ export default {
     components: {
         InputField
     },
+    data() {
+        return {
+            userName: '',
+            password: ''
+        }
+    },
     methods: {
+
+        ...mapActions(['updateUser']),
         reroute() {
             router.push(`/signup`)
+        },
+        handleUsernameUpdate(username) {
+            this.userName = username
+        },
+        handlePasswordUpdate(password) {
+            this.password = password
+        },
+        login() {
+            if (this.userName === 'karim' && this.password === 'karim') {
+                const user = {
+                    name: 'Karim',
+                    questionnaire: true,
+                    role: 'ADMIN'
+                }
+                this.updateUser(user)
+                router.push(`/home`)
+            }
         }
     }
 }
@@ -42,6 +72,7 @@ export default {
 
 <style scoped lang="scss">
 @import '@/assets/sass/shared';
+
 * {
     padding: 0;
     margin: 0;
@@ -49,8 +80,9 @@ export default {
 
 .login-container {
     @extend %standard-logged-in-container;
-    
+
     align-items: center;
+
     .mail {
         margin-bottom: 16px;
     }
@@ -58,7 +90,8 @@ export default {
     .password {
         margin-bottom: 8px;
     }
-    .forgot-password{
+
+    .forgot-password {
         align-self: flex-end;
         font-size: 14px;
         font-family: 'Poppins-Regular';
@@ -66,8 +99,10 @@ export default {
         color: #212C2D;
         margin-bottom: 190px;
     }
+
     &-actions {
         margin-bottom: 32px;
+
         .separator {
             display: flex;
             justify-content: space-between;
@@ -75,7 +110,7 @@ export default {
             color: #535A5F;
             font-family: 'Poppins-Regular';
             max-width: 390px;
-box-sizing: content-box;
+            box-sizing: content-box;
             margin: 24px 0;
 
             .line {
@@ -95,7 +130,7 @@ box-sizing: content-box;
             font-family: 'Poppins-Regular';
             border-radius: 12px;
             max-width: 390px;
-box-sizing: content-box;
+            box-sizing: content-box;
         }
 
         .login-provider {
@@ -110,7 +145,7 @@ box-sizing: content-box;
             color: #535A5F;
             border-radius: 12px;
             max-width: 390px;
-box-sizing: content-box;
+            box-sizing: content-box;
             margin-bottom: 16px;
         }
 

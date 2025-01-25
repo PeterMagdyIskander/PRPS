@@ -1,15 +1,14 @@
 <template>
     <div class="input-field">
-        <input :type="isPassword ? 'password' : 'text'" 
-        :placeholder="placeholder">
+        <input :class="{ 'contact-us': contactUs }" :type="isPassword ? 'password' : 'text'" :placeholder="placeholder"
+            v-on:input="$emit('update:modelValue', $event.target.value)" :value="modelValue">
         <img v-if="password && !showPassword" @click="viewPassword()" src="@/assets/images/closed.svg"
             alt="show password">
         <img v-if="password && showPassword" @click="viewPassword()" src="@/assets/images/opened.svg"
             alt="show password">
 
-        <img v-if="dropdown" src="@/assets/images/arrow-down.svg"
-            alt="arrow down">
-        
+        <img v-if="dropdown" src="@/assets/images/arrow-down.svg" alt="arrow down">
+
     </div>
 </template>
 <script>
@@ -29,8 +28,17 @@ export default {
         placeholder: {
             type: String,
             required: true,
-        }
+        },
+        contactUs: {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+
+        modelValue: String
+
     },
+    emits: ["update:modelValue"],
     data() {
         return {
             isPassword: false,
@@ -61,21 +69,29 @@ export default {
     border: 1px solid #D7DBDF;
     border-radius: 12px;
     position: relative;
+
     input {
         all: unset;
         width: 100%;
-        color: #ffffff;
+        color: #535A5F;
         font-size: 16px;
         font-family: 'Poppins-Regular';
     }
-    input::placeholder{
-        color:#fff;
-    }
-    img{
+
+    img {
         width: 24px;
         height: 24px;
         right: 13px;
         position: absolute;
+    }
+
+    .contact-us {
+        color: #fff;
+
+        &::placeholder {
+
+            color: #fff;
+        }
     }
 }
 </style>

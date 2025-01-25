@@ -34,7 +34,8 @@ export default createStore({
     setFailed: (state, failed) => (state.failed = failed)
   },
   actions: {
-    async login({ commit }) {},
+    async login({ commit }) {
+    },
     updateUser({ commit }, user) {
       commit('setUser', user);
     },
